@@ -36,7 +36,7 @@
         <script>
             var div = document.getElementById('container');
             var PSV = new PhotoSphereViewer({
-                panorama: 'http://tassedecafe.org/wp-content/uploads/2013/01/parc-saint-pierre-amiens.jpg',
+                panorama: 'assets/photo_sphere/parc-saint-pierre-amiens.jpg',
                 container: div,
                 time_anim: 3000,
                 navbar: true,
