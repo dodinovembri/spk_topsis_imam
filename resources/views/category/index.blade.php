@@ -26,7 +26,7 @@
                         <div class="tags-sec section-padding">
                             <div class="row">
                                 <div class="col-sm-6 col-lg-4">
-                                    <a href="../tag/getting-started/index.html">
+                                    <a href="{{ url('recomendation') }}">
                                         <div class="popular-tags">
                                             <div class="cus-tags-feature">
                                                 <img class="lazy" src="{{ asset('assets/content/images/size/w820/2021/04/cate-2.jpg') }}" alt="" />
