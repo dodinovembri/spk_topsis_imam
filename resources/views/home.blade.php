@@ -16,10 +16,7 @@
                             <div class="container">
                                 <div class="content-entry-wrap">
                                     <div class="inner-box">
-                                        <div class="entry-category">
-                                            <a href="{{ url('recomendation/filter') }}">Mau Kemana</a>
-                                            <a href="{{ url('recomendation') }}" class="tag tag- lifestyle">Kemana Saja</a>
-                                        </div>
+                                        
                                         <h3 class="entry-title">
                                             <a href="organising-content/index.html">The latest on BREXIT and how it will affect travellers</a>
                                         </h3>
@@ -32,6 +29,10 @@
                                                 <time datetime="2021-02-03">3 Feb 2021</time>
                                             </div>
                                             <!--./ entry-date -->
+                                        </div><br>
+                                        <div class="entry-category">
+                                            <a href="{{ url('recomendation/filter') }}">Mau Kemana</a>
+                                            <a href="{{ url('recomendation') }}" class="tag tag- lifestyle">Kemana Saja</a>
                                         </div>
                                         <!--./ entry-title -->
                                     </div>
