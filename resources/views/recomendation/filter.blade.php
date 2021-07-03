@@ -76,6 +76,12 @@
                                                         </select>
                                                         <div class="subscribe-btn d-flex align-items-center">
                                                             <button type="submit" class="btn btn-sign">
+                                                                <span class="button-text">Keterangan Kriteria</span>
+                                                                <span class="button-loader"><i class="fas fa-sync-alt"></i></span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="subscribe-btn d-flex align-items-center">
+                                                            <button type="submit" class="btn btn-sign">
                                                                 <span class="button-text">Dapatkan Rekomendasi</span>
                                                                 <span class="button-loader"><i class="fas fa-sync-alt"></i></span>
                                                             </button>
