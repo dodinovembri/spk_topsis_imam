@@ -42,3 +42,11 @@ Route::get('category/show/{id}', [App\Http\Controllers\CategoryController::class
 Route::get('category/edit/{id}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('edit');
 Route::post('category/update/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
 Route::get('category/destroy/{id}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
+
+Route::get('contact', [App\Http\Controllers\ContactController::class, 'index'])->name('index');
+Route::get('contact/create', [App\Http\Controllers\ContactController::class, 'create'])->name('create');
+Route::post('contact/store', [App\Http\Controllers\ContactController::class, 'store'])->name('store');
+Route::get('contact/show/{id}', [App\Http\Controllers\ContactController::class, 'show'])->name('show');
+Route::get('contact/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('edit');
+Route::post('contact/update/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('update');
+Route::get('contact/destroy/{id}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('destroy');
