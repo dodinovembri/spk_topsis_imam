@@ -20,7 +20,7 @@
                 <div class="col-lg-12 main-wrapper-content">
                     <main class="site-main style-two">
                         <div class="row" id="post-masonry">
-                            <div class="col-lg-4 post-loop odd">
+                            <div class="col-lg-3 post-loop odd">
                                 <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
                                     <div class="entry-thumb">
                                         <figure class="thumb-wrap">
@@ -60,7 +60,7 @@
                                     <!--./ content-entry-wrap -->
                                 </article>
                             </div>
-                            <div class="col-lg-4 post-loop even">
+                            <div class="col-lg-3 post-loop even">
                                 <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
                                     <div class="entry-thumb">
                                         <figure class="thumb-wrap">
@@ -100,7 +100,7 @@
                                     <!--./ content-entry-wrap -->
                                 </article>
                             </div>
-                            <div class="col-lg-4 post-loop odd">
+                            <div class="col-lg-3 post-loop odd">
                                 <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
                                     <div class="entry-thumb">
                                         <figure class="thumb-wrap">
@@ -140,7 +140,7 @@
                                     <!--./ content-entry-wrap -->
                                 </article>
                             </div>
-                            <div class="col-lg-4 post-loop even">
+                            <div class="col-lg-3 post-loop even">
                                 <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
                                     <div class="entry-thumb">
                                         <figure class="thumb-wrap">
@@ -180,7 +180,7 @@
                                     <!--./ content-entry-wrap -->
                                 </article>
                             </div>
-                            <div class="col-lg-4 post-loop odd">
+                            <div class="col-lg-3 post-loop odd">
                                 <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
                                     <div class="entry-thumb">
                                         <figure class="thumb-wrap">

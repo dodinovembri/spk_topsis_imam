@@ -28,7 +28,19 @@
                                     <div class="entry-thumb">
                                         <figure class="thumb-wrap">
                                             <a href="welcome/index.html">
-                                                <img class="post-card-image" src="{{ asset('assets/content/images/size/w360/2021/04/05.jpg') }}" loading="lazy" alt="Start here for a quick overview everything you need to know" />
+                                                <style>
+                                                    .circular--square {
+                                                        border-radius: 50%;
+                                                    }
+
+                                                    .circular--square {
+                                                        border-top-left-radius: 50% 50%;
+                                                        border-top-right-radius: 50% 50%;
+                                                        border-bottom-right-radius: 50% 50%;
+                                                        border-bottom-left-radius: 50% 50%;
+                                                    }
+                                                </style>
+                                                <img class="circular--square" src="{{ asset('assets/content/images/size/w360/2021/04/05.jpg') }}" width="80px" loading="lazy" alt="Start here for a quick overview everything you need to know" />
                                             </a>
                                         </figure>
                                         <!--./ thumb-wrap -->

@@ -30,8 +30,8 @@
                         </div>
                     </div><!-- /.header-logo-area -->
                 </div>
-                <div class="col-lg-3"></div>
-                <div class="col-md-6 justify-content-end">
+                <div class="col-lg-1"></div>
+                <div class="col-md-8 justify-content-end">
                     <div class="site-navigation">
                         <div class="navigation-area">
                             <div class="site-navigation">
@@ -40,10 +40,10 @@
                                         <div class="menu-content">
                                             <div class="mainmenu d-flex align-items-center">
                                                 <ul class="nav">
-                                                    <li class="nav-home nav-current"><a href="index.html">Home</a></li>
-                                                    <li class="nav-tags"><a href="tags/index.html">Tags</a></li>
-                                                    <li class="nav-authors"><a href="authors/index.html">Authors</a></li>
-                                                    <li class="nav-membership"><a href="membership/index.html">Membership</a></li>
+                                                    <li class="nav-home nav-current"><a href="{{ url('/') }}">Halaman Utama</a></li>
+                                                    <li class="nav-tags"><a href="{{ url('recomendation') }}">Rekomendasi</a></li>
+                                                    <li class="nav-authors"><a href="{{ url('category') }}">Daftar Wisata</a></li>
+                                                    <li class="nav-membership"><a href="{{ url('contact') }}">Kontak</a></li>
                                                     <li class="nav-contact"><a href="contact-2/index.html">Contact</a></li>
                                                 </ul>
 
