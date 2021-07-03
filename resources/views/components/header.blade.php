@@ -41,7 +41,7 @@
                                             <div class="mainmenu d-flex align-items-center">
                                                 <ul class="nav">
                                                     <li class="nav-home nav-current"><a href="{{ url('/') }}">Halaman Utama</a></li>
-                                                    <li class="nav-tags"><a href="{{ url('recomendation') }}">Rekomendasi</a></li>
+                                                    <li class="nav-tags"><a href="{{ url('recomendation/filter') }}">Rekomendasi</a></li>
                                                     <li class="nav-authors"><a href="{{ url('category') }}">Daftar Wisata</a></li>
                                                     <li class="nav-membership"><a href="{{ url('contact') }}">Kontak</a></li>
                                                     <li class="nav-contact"><a href="contact-2/index.html">Contact</a></li>
