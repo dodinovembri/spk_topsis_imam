@@ -24,7 +24,7 @@
                                 <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
                                     <div class="entry-thumb">
                                         <figure class="thumb-wrap">
-                                            <a href="welcome/index.html">
+                                            <a href="{{ url('recomendation/show/1') }}">
                                                 <img class="post-card-image" src="{{ asset('assets/content/images/size/w360/2021/04/05.jpg') }}" loading="lazy" alt="Start here for a quick overview everything you need to know" />
                                             </a>
                                         </figure>
