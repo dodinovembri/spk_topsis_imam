@@ -8,7 +8,7 @@
                         <div class="container-wapper">
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-3 d-lg-none pd-0">
-                                    <a href="#" class="search-bar"><i class="fas fa-search"></i></a>
+                                    <!-- <a href="#" class="search-bar"><i class="fas fa-search"></i></a> -->
                                 </div>
                                 <div class="col-6 col-lg-12">
                                     <div class="site-branding">
