@@ -23,10 +23,6 @@
                             <div class="entry-category">
                                 <a href="../tag/getting-started/index.html" class="tag tag- getting-started">Outdoor</a>
                             </div>
-                            <div class="entry-date">
-                                <span><time class="byline-meta-date" datetime="Apr-18-2021">April 18 -
-                                        2021</time></span>
-                            </div>
                         </div>
 
                         <h1 class="entry-title">Start here for a quick overview everything you need to know</h1>
@@ -36,14 +32,6 @@
                                 help you get started with Ghost into this one post. </p>
                         </div>
 
-                        <div class="entry-meta-content">
-                            <div class="entry-author">
-                                By - <a href="../author/ghost/index.html">Johan Doe</a>
-                            </div>
-                            <div class="byline-meta-content">
-                                <span class="byline-reading-time">3 min read</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="post-thumbnail-area single-post-thumbnail">

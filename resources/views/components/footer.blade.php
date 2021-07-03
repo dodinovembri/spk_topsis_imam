@@ -23,9 +23,9 @@
 							<aside class="widget widget_links">
 								<div class="widget-content">
 									<ul class="nav">
-										<li class="nav-about nav-current"><a href="index.html#">Tentang</a></li>
-										<li class="nav-contact nav-current"><a href="index.html#">Kontak</a></li>
-										<li class="nav-carrers nav-current"><a href="index.html#">Disclaimer</a></li>
+										<li class="nav-about nav-current"><a href="{{ url('about') }}">Tentang</a></li>
+										<li class="nav-contact nav-current"><a href="{{ url('contact') }}">Kontak</a></li>
+										<li class="nav-carrers nav-current"><a href="{{ url('privacy') }}">Disclaimer</a></li>
 									</ul>
 
 								</div>
