@@ -3,8 +3,8 @@
     <div class="side-content ">
         <!-- BEGIN .user-profile -->
         <div class="user-profile">
-            <img src="img/user.png" class="profile-thumb" alt="User Thumb">
-            <h6 class="profile-name">Yuki Hayashi</h6>
+            <img src="{{ asset('users') }}/{{ auth()->user()->image }}" class="profile-thumb" alt="User Thumb">
+            <h6 class="profile-name">{{ auth()->user()->name }}</h6>
             <ul class="profile-actions">
                 <li>
                     <a href="#">
@@ -29,37 +29,20 @@
         <nav class="side-nav">
             <!-- BEGIN: side-nav-content -->
             <ul class="unifyMenu" id="unifyMenu">
-                <li class="active selected">
-                    <a href="#" class="has-arrow" aria-expanded="false">
+                <li>
+                    <a href="{{ url('/') }}">
                         <span class="has-icon">
                             <i class="icon-laptop_windows"></i>
                         </span>
-                        <span class="nav-title">Dashboards</span>
+                        <span class="nav-title">Dashboard</span>
                     </a>
-                    <ul aria-expanded="false" class="collapse in">
-                        <li>
-                            <a href='index-2.html' class="current-page">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href='dashboard2.html'>CRM</a>
-                        </li>
-                        <li>
-                            <a href='dashboard3.html'>Analytics</a>
-                        </li>
-                        <li>
-                            <a href='dashboard4.html'>Ecommerce</a>
-                        </li>
-                        <li>
-                            <a href='quick-dashboard.html'>Quick Dashboard</a>
-                        </li>
-                    </ul>
                 </li>
                 <li>
-                    <a href="widgets.html">
+                    <a href="{{ url('admin/alternative') }}">
                         <span class="has-icon">
-                            <i class="icon-flash-outline"></i>
+                            <i class="icon-center_focus_strong"></i>
                         </span>
-                        <span class="nav-title">Graph Widgets</span>
+                        <span class="nav-title">Alternatif</span>
                     </a>
                 </li>
                 <li>
@@ -67,7 +50,7 @@
                         <span class="has-icon">
                             <i class="icon-adjust2"></i>
                         </span>
-                        <span class="nav-title">Cool Features</span>
+                        <span class="nav-title">Alternatif</span>
                     </a>
                     <ul aria-expanded="false">
                         <li>

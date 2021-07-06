@@ -30,13 +30,13 @@
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Password</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="password" class="form-control" placeholder="Password" required>
+                                                    <input type="password" name="password" class="form-control" placeholder="Password" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Password Confirm</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="password_confirm" class="form-control" placeholder="Password Confirm" required>
+                                                    <input type="password" name="password_confirm" class="form-control" placeholder="Password Confirm" required>
                                                 </div>
                                             </div> <br>
                                             <div class="form-group row gutters">

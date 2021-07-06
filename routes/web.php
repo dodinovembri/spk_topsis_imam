@@ -66,4 +66,13 @@ Route::prefix('admin')->group(function () {
     Route::post('profile/update/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('update');
     Route::get('profile/destroy/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'destroy'])->name('destroy');
     Route::get('profile/change_password', [App\Http\Controllers\Admin\ProfileController::class, 'change_password'])->name('change_password');
+    Route::post('profile/update_password/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'update_password'])->name('update_password');
+
+    Route::get('alternative', [App\Http\Controllers\Admin\AlternativeController::class, 'index'])->name('index');
+    Route::get('alternative/create', [App\Http\Controllers\Admin\AlternativeController::class, 'create'])->name('create');
+    Route::post('alternative/store', [App\Http\Controllers\Admin\AlternativeController::class, 'store'])->name('store');
+    Route::get('alternative/show/{id}', [App\Http\Controllers\Admin\AlternativeController::class, 'show'])->name('show');
+    Route::get('alternative/edit/{id}', [App\Http\Controllers\Admin\AlternativeController::class, 'edit'])->name('edit');
+    Route::post('alternative/update/{id}', [App\Http\Controllers\Admin\AlternativeController::class, 'update'])->name('update');
+    Route::get('alternative/destroy/{id}', [App\Http\Controllers\Admin\AlternativeController::class, 'destroy'])->name('destroy');    
 });

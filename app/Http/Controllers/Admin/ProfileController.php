@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -110,5 +111,19 @@ class ProfileController extends Controller
     public function change_password()
     {
         return view('admin.profile.change_password');
+    }
+
+    public function update_password(Request $request, $id)
+    {
+        if ($request->input('password') != $request->input('password_confirm')) {
+            return redirect(url('admin/profile/change_password'))->with('error', 'Your password doesnt match!');
+        } else {
+            $update = UserModel::find($id);
+            $update->password = Hash::make($request->password);
+            $update->updated_at = date("Y-m-d H:i:s");
+            $update->update();
+
+            return redirect(url('admin/profile/change_password'))->with('message', 'Success update password!');
+        }
     }
 }
