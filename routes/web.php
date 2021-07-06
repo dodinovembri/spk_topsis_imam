@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('recomendation', [App\Http\Controllers\RecomendationController::class, 'index'])->name('index');
 Route::get('recomendation/create', [App\Http\Controllers\RecomendationController::class, 'create'])->name('create');
@@ -50,3 +51,19 @@ Route::get('contact/show/{id}', [App\Http\Controllers\ContactController::class, 
 Route::get('contact/edit/{id}', [App\Http\Controllers\ContactController::class, 'edit'])->name('edit');
 Route::post('contact/update/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('update');
 Route::get('contact/destroy/{id}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('destroy');
+
+
+/**
+ * route for administrator
+ */
+
+Route::prefix('admin')->group(function () {
+    Route::get('profile', [App\Http\Controllers\Admin\ProfileController::class, 'index'])->name('index');
+    Route::get('profile/create', [App\Http\Controllers\Admin\ProfileController::class, 'create'])->name('create');
+    Route::post('profile/store', [App\Http\Controllers\Admin\ProfileController::class, 'store'])->name('store');
+    Route::get('profile/show/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'show'])->name('show');
+    Route::get('profile/edit/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('edit');
+    Route::post('profile/update/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('update');
+    Route::get('profile/destroy/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'destroy'])->name('destroy');
+    Route::get('profile/change_password', [App\Http\Controllers\Admin\ProfileController::class, 'change_password'])->name('change_password');
+});
