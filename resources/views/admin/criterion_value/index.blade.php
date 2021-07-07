@@ -21,7 +21,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Kriteria</li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/criteria') }}">Kriteria</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Nilai Kriteria</li>
                         </ol>
                     </nav>
                 </div>
@@ -32,33 +33,31 @@
                             <div class="card-header">List Kriteria</div> <br>
                             @include('admin.components.flash_message')
                             <div class="card-body" style="margin-top: -20px;">
-                                <a href="{{ url('admin/criteria/create') }}"><button type="button" class="btn btn-primary">Buat Kriteria</button></a>
+                                <a href="{{ url('admin/criterion_value/create') }}"><button type="button" class="btn btn-primary">Buat Nilai Kriteria</button></a>
                             </div>
                             <div class="card-body">
                                 <table id="basicExample" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode Kriteria</th>
-                                            <th>Nama Kriteria</th>
-                                            <th>Jenis Kriteria</th>
-                                            <th>Bobot</th>
+                                            <th>Kriteria</th>
+                                            <th>Keterangan</th>
+                                            <th>Nilai</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($criterias as $key => $value) {
+                                        foreach ($criterion_values as $key => $value) {
                                             $no++; ?>
                                             <tr>
                                                 <td>{{ $no }}</td>
-                                                <td><a href="{{ url('admin/criterion_values', $value->id) }}"><b><u>{{ $value->kode_kriteria }}</u></b></a></td>
-                                                <td>{{ $value->nama_kriteria }}</td>
-                                                <td>{{ $value->jenis_kriteria }}</td>
-                                                <td>{{ $value->bobot }}</td>
+                                                <td>{{ $value->criteria->kode_kriteria }} - {{ $value->criteria->nama_kriteria }}</td>
+                                                <td>{{ $value->keterangan }}</td>
+                                                <td>{{ $value->nilai }}</td>
                                                 <td>
-                                                    <a href="{{ url('admin/criteria/show', $value->id) }}"><span class="icon-eye"></span></a> &nbsp;
-                                                    <a href="{{ url('admin/criteria/edit', $value->id) }}"><span class="icon-border_color"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/criterion_value/show', $value->id) }}"><span class="icon-eye"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/criterion_value/edit', $value->id) }}"><span class="icon-border_color"></span></a> &nbsp;
                                                     <a href="#" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><span class="icon-trash2"></span></a>
                                                 </td>
                                             </tr>
@@ -78,7 +77,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                            <a href="{{ url('admin/criteria/destroy', $value->id) }}"><button type="button" class="btn btn-primary">Hapus Data</button></a>
+                                                            <a href="{{ url('admin/criterion_value/destroy', $value->id) }}"><button type="button" class="btn btn-primary">Hapus Data</button></a>
                                                         </div>
                                                     </div>
                                                 </div>

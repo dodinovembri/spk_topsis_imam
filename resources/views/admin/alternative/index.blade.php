@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-header">List Alternatif</div> <br>
                             @include('admin.components.flash_message')
-                            <div class="card-body">
+                            <div class="card-body" style="margin-top: -20px;">
                                 <a href="{{ url('admin/alternative/create') }}"><button type="button" class="btn btn-primary">Buat Alternatif</button></a>
                             </div>
                             <div class="card-body">
@@ -52,13 +52,13 @@
                                             $no++; ?>
                                             <tr>
                                                 <td>{{ $no }}</td>
-                                                <td>{{ $value->kode }}</td>
-                                                <td>{{ $value->nama }}</td>
+                                                <td>{{ $value->kode_alternatif }}</td>
+                                                <td>{{ $value->nama_alternatif }}</td>
                                                 <td>{{ $value->latitude }}</td>
                                                 <td>{{ $value->longitude }}</td>
                                                 <td>
-                                                    <a href=""><span class="icon-eye"></span></a> &nbsp;
-                                                    <a href="{{ url('admin/alternative/edit'. $value->id) }}"><span class="icon-border_color"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/alternative/show', $value->id) }}"><span class="icon-eye"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/alternative/edit', $value->id) }}"><span class="icon-border_color"></span></a> &nbsp;
                                                     <a href="#" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><span class="icon-trash2"></span></a>
                                                 </td>
                                             </tr>

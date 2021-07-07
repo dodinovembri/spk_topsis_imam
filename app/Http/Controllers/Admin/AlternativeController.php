@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AlternativeModel;
-use App\Models\AlternativeValueModel;
-use App\Models\CriteriaModel;
-use App\Models\CriterionValueModel;
 use Illuminate\Support\Facades\Validator;
 
 class AlternativeController extends Controller
@@ -41,7 +38,7 @@ class AlternativeController extends Controller
      */
     public function store(Request $request)
     {
-        $check = AlternativeModel::where('kode', $request->input('kode'))->first();
+        $check = AlternativeModel::where('kode_alternatif', $request->input('kode_alternatif'))->first();
         if (empty($check)) {
 
             $file                       = $request->file('gambar');
@@ -49,11 +46,11 @@ class AlternativeController extends Controller
             $request->file('gambar')->move("img/alternative/", $fileName3);
 
             $insert = new AlternativeModel();
-            $insert->kode = $request->kode;
-            $insert->nama = $request->nama;
+            $insert->kode_alternatif = $request->kode_alternatif;
+            $insert->nama_alternatif = $request->nama_alternatif;
             $insert->latitude = $request->latitude;
             $insert->longitude = $request->longitude;
-            $insert->gambar = $request->fileName3;
+            $insert->gambar = $fileName3;
             $insert->keterangan = $request->keterangan;
             $insert->save();
 
@@ -96,29 +93,21 @@ class AlternativeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $file                       = $request->file('gambar');
+        $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
+        $request->file('gambar')->move("img/alternative/", $fileName3);
 
-        set_time_limit(0);
-        $validator = Validator::make($request->all(), [
-            'image'    => 'max:5000'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->url('admin/alternative')->withInput()->withErrors($validator);
-        } else {
-
-            $update = AlternativeModel::find($id);
-            $update->name = $request->name;
-            $update->description = $request->description;
-            if (isset($request->image)) {
-                $update->image = $request->image;
-            }
-            $update->ket = $request->ket;
-            $update->location = $request->location;
-            $update->updated_by = auth()->user()->id;
-            $update->updated_at = date("Y-m-d H:i:s");
-            $update->update();
-            return redirect(url('admin/alternative'))->with('message', 'Data berhasil diupdate!');
+        $update = AlternativeModel::find($id);
+        $update->kode_alternatif = $request->kode_alternatif;
+        $update->nama_alternatif = $request->nama_alternatif;
+        $update->latitude = $request->latitude;
+        $update->longitude = $request->longitude;
+        if (isset($request->image)) {
+            $update->image = $request->image;
         }
+        $update->keterangan = $request->keterangan;
+        $update->update();
+        return redirect(url('admin/alternative'))->with('message', 'Data berhasil diupdate!');
     }
 
     /**

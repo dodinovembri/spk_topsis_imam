@@ -39,13 +39,13 @@
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Alternatif</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="kode" class="form-control" placeholder="Kode Alternatif" required>
+                                                    <input type="text" name="kode_alternatif" class="form-control" placeholder="Kode Alternatif" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Alternatif</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="nama" class="form-control" placeholder="Nama Alternatif" required>
+                                                    <input type="text" name="nama_alternatif" class="form-control" placeholder="Nama Alternatif" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
@@ -69,7 +69,7 @@
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                                 <div class="col-sm-9">
-                                                    <textarea type="file" rows="3" name="keterangan" class="form-control" placeholder="Longitude"> </textarea>
+                                                    <textarea type="file" rows="7" name="keterangan" class="form-control" placeholder="Longitude"> </textarea>
                                                 </div>
                                             </div><br>
                                             <div class="form-group row gutters">

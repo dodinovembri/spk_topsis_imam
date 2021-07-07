@@ -82,7 +82,15 @@ Route::prefix('admin')->group(function () {
     Route::get('criteria/show/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'show'])->name('show');
     Route::get('criteria/edit/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'edit'])->name('edit');
     Route::post('criteria/update/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'update'])->name('update');
-    Route::get('criteria/destroy/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'destroy'])->name('destroy');     
+    Route::get('criteria/destroy/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'destroy'])->name('destroy');   
+    
+    Route::get('criterion_values/{id}', [App\Http\Controllers\Admin\CriterionValueController::class, 'index'])->name('index');
+    Route::get('criterion_value/create', [App\Http\Controllers\Admin\CriterionValueController::class, 'create'])->name('create');
+    Route::post('criterion_value/store', [App\Http\Controllers\Admin\CriterionValueController::class, 'store'])->name('store');
+    Route::get('criterion_value/show/{id}', [App\Http\Controllers\Admin\CriterionValueController::class, 'show'])->name('show');
+    Route::get('criterion_value/edit/{id}', [App\Http\Controllers\Admin\CriterionValueController::class, 'edit'])->name('edit');
+    Route::post('criterion_value/update/{id}', [App\Http\Controllers\Admin\CriterionValueController::class, 'update'])->name('update');
+    Route::get('criterion_value/destroy/{id}', [App\Http\Controllers\Admin\CriterionValueController::class, 'destroy'])->name('destroy');       
 
     Route::get('alternative', [App\Http\Controllers\Admin\AlternativeController::class, 'index'])->name('index');
     Route::get('alternative/create', [App\Http\Controllers\Admin\AlternativeController::class, 'create'])->name('create');

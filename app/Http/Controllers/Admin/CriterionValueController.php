@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CriterionValueModel;
+use App\Models\CriteriaModel;
 
 class CriterionValueController extends Controller
 {
@@ -15,8 +16,14 @@ class CriterionValueController extends Controller
      */
     public function index($id)
     {
-        $data['criteria_id'] = $id;
-        $data['criterion_value'] = CriterionValueModel::where('criteria_id', $id)->get();
+        $criteria = CriteriaModel::find($id);
+        session([
+            'id_kriteria' => $id,
+            'kode_kriteria' => $criteria->kode_kriteria,
+            'nama_kriteria' => $criteria->nama_kriteria
+        ]);
+
+        $data['criterion_values'] = CriterionValueModel::with('criteria')->where('id_kriteria', $id)->get();
         return view('admin.criterion_value.index', $data);
     }
 
@@ -25,10 +32,9 @@ class CriterionValueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $data['criteria_id'] = $id;
-        return view('admin.criterion_value.create', $data);
+        return view('admin.criterion_value.create');
     }
 
     /**
@@ -37,17 +43,15 @@ class CriterionValueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $criteria_id)
+    public function store(Request $request)
     {
         $insert = new CriterionValueModel();
-        $insert->criteria_id = $criteria_id;
-        $insert->description = $request->description;        
-        $insert->value = $request->value;        
-        $insert->created_by = auth()->user()->id;        
-        $insert->created_at = date("Y-m-d H:i:s");
+        $insert->id_kriteria = $request->session()->get('id_kriteria');
+        $insert->keterangan = $request->keterangan;        
+        $insert->nilai = $request->nilai;        
         $insert->save();
 
-        return redirect(route('admin.criterion_value.index', $criteria_id))->with('message', 'Success add data !');
+        return redirect(url('admin/criterion_values', $request->session()->get('id_kriteria')))->with('message', 'Sukses menambahkan data!');
     }
 
     /**
@@ -56,9 +60,8 @@ class CriterionValueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $criteria_id)
+    public function show($id)
     {
-        $data['criteria_id'] = $criteria_id;
         $data['criterion_value'] = CriterionValueModel::find($id);
         return view('admin.criterion_value.show', $data);
     }
@@ -69,9 +72,8 @@ class CriterionValueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $criteria_id)
+    public function edit($id)
     {
-        $data['criteria_id'] = $criteria_id;
         $data['criterion_value'] = CriterionValueModel::find($id);
         return view('admin.criterion_value.edit', $data);
     }
@@ -86,13 +88,11 @@ class CriterionValueController extends Controller
     public function update(Request $request, $id)
     {
         $find = CriterionValueModel::find($id);        
-        $find->description = $request->description;        
-        $find->value = $request->value;        
-        $find->updated_by = auth()->user()->id;        
-        $find->updated_at = date("Y-m-d H:i:s");
-        $find->save();
+        $find->keterangan = $request->keterangan;        
+        $find->nilai = $request->nilai;     
+        $find->update();
 
-        return redirect(route('admin.criterion_value.index', $request->criteria_id ))->with('message', 'Success edit data !');        
+        return redirect(url('admin/criterion_values', $request->session()->get('id_kriteria')))->with('message', 'Data berhasil diupdate!');        
     }
 
     /**
@@ -101,11 +101,11 @@ class CriterionValueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $findtodelete = CriterionValueModel::find($id);
         $findtodelete->delete();
 
-        return back()->with('message', 'Data success deleted !');
+        return redirect(url('admin/criterion_values', $request->session()->get('id_kriteria')))->with('message', 'Data berhasil dihapus!');
     }
 }

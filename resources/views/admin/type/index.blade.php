@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-header">List Jenis Alternatif</div> <br>
                             @include('admin.components.flash_message')
-                            <div class="card-body">
+                            <div class="card-body" style="margin-top: -20px;">
                                 <a href="{{ url('admin/type/create') }}"><button type="button" class="btn btn-primary">Buat Jenis Alternatif</button></a>
                             </div>
                             <div class="card-body">

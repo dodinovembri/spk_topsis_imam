@@ -12,3 +12,4 @@ CREATE TABLE kriteria (
 	PRIMARY KEY (id)
 );
 ```
+

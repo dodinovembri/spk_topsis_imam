@@ -8,6 +8,7 @@ class AlternativeValueModel extends Model
 {
     public $table ='nilai_alternatif';
     public $guarded ='[]';
+    public $timestamps = false;
 
     public function alternative()
     {
