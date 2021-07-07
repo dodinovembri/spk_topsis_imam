@@ -32,7 +32,7 @@
                 <li>
                     <a href="{{ url('/') }}">
                         <span class="has-icon">
-                            <i class="icon-laptop_windows"></i>
+                            <i class="icon-layers3"></i>
                         </span>
                         <span class="nav-title">Dashboard</span>
                     </a>
@@ -40,7 +40,7 @@
                 <li>
                     <a href="{{ url('admin/alternative') }}">
                         <span class="has-icon">
-                            <i class="icon-center_focus_strong"></i>
+                            <i class="icon-picture"></i>
                         </span>
                         <span class="nav-title">Alternatif</span>
                     </a>
@@ -48,7 +48,7 @@
                 <li>
                     <a href="{{ url('admin/criteria') }}">
                         <span class="has-icon">
-                            <i class="icon-adjust2"></i>
+                            <i class="icon-document3"></i>
                         </span>
                         <span class="nav-title">Kriteria</span>
                     </a>
