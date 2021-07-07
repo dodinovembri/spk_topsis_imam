@@ -68,6 +68,14 @@ Route::prefix('admin')->group(function () {
     Route::get('profile/change_password', [App\Http\Controllers\Admin\ProfileController::class, 'change_password'])->name('change_password');
     Route::post('profile/update_password/{id}', [App\Http\Controllers\Admin\ProfileController::class, 'update_password'])->name('update_password');
 
+    Route::get('type', [App\Http\Controllers\Admin\TypeController::class, 'index'])->name('index');
+    Route::get('type/create', [App\Http\Controllers\Admin\TypeController::class, 'create'])->name('create');
+    Route::post('type/store', [App\Http\Controllers\Admin\TypeController::class, 'store'])->name('store');
+    Route::get('type/show/{id}', [App\Http\Controllers\Admin\TypeController::class, 'show'])->name('show');
+    Route::get('type/edit/{id}', [App\Http\Controllers\Admin\TypeController::class, 'edit'])->name('edit');
+    Route::post('type/update/{id}', [App\Http\Controllers\Admin\TypeController::class, 'update'])->name('update');
+    Route::get('type/destroy/{id}', [App\Http\Controllers\Admin\TypeController::class, 'destroy'])->name('destroy');    
+
     Route::get('alternative', [App\Http\Controllers\Admin\AlternativeController::class, 'index'])->name('index');
     Route::get('alternative/create', [App\Http\Controllers\Admin\AlternativeController::class, 'create'])->name('create');
     Route::post('alternative/store', [App\Http\Controllers\Admin\AlternativeController::class, 'store'])->name('store');

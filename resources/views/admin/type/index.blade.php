@@ -21,7 +21,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Alternatif</li>
+                            <li class="breadcrumb-item active" aria-current="page">Jenis Alternatif</li>
                         </ol>
                     </nav>
                 </div>
@@ -29,36 +29,34 @@
                 <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="card">
-                            <div class="card-header">List Alternatif</div> <br>
+                            <div class="card-header">List Jenis Alternatif</div> <br>
                             @include('admin.components.flash_message')
                             <div class="card-body">
-                                <a href="{{ url('admin/alternative/create') }}"><button type="button" class="btn btn-primary">Buat Alternatif</button></a>
+                                <a href="{{ url('admin/type/create') }}"><button type="button" class="btn btn-primary">Buat Jenis Alternatif</button></a>
                             </div>
                             <div class="card-body">
                                 <table id="basicExample" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode</th>
-                                            <th>Nama</th>
-                                            <th>Latitude</th>
-                                            <th>Longitude</th>
+                                            <th>Kode Jenis</th>
+                                            <th>Nama Jenis</th>
+                                            <th>Keterangan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no = 0;
-                                        foreach ($alternatives as $key => $value) {
+                                        foreach ($types as $key => $value) {
                                             $no++; ?>
                                             <tr>
                                                 <td>{{ $no }}</td>
-                                                <td>{{ $value->kode }}</td>
-                                                <td>{{ $value->nama }}</td>
-                                                <td>{{ $value->latitude }}</td>
-                                                <td>{{ $value->longitude }}</td>
+                                                <td>{{ $value->kode_jenis }}</td>
+                                                <td>{{ $value->nama_jenis }}</td>
+                                                <td>{{ $value->keterangan }}</td>
                                                 <td>
-                                                    <a href=""><span class="icon-eye"></span></a> &nbsp;
-                                                    <a href="{{ url('admin/alternative/edit'. $value->id) }}"><span class="icon-border_color"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/type/show', $value->id) }}"><span class="icon-eye"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/type/edit', $value->id) }}"><span class="icon-border_color"></span></a> &nbsp;
                                                     <a href="#" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><span class="icon-trash2"></span></a>
                                                 </td>
                                             </tr>
@@ -68,7 +66,7 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus Data</h5>
                                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
@@ -78,7 +76,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                            <a href="{{ url('admin/alternative/destroy', $value->id) }}"><button type="button" class="btn btn-primary">Hapus Data</button></a>
+                                                            <a href="{{ url('admin/type/destroy', $value->id) }}"><button type="button" class="btn btn-primary">Hapus Data</button></a>
                                                         </div>
                                                     </div>
                                                 </div>

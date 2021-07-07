@@ -5,24 +5,6 @@
         <div class="user-profile">
             <img src="{{ asset('users') }}/{{ auth()->user()->image }}" class="profile-thumb" alt="User Thumb">
             <h6 class="profile-name">{{ auth()->user()->name }}</h6>
-            <ul class="profile-actions">
-                <li>
-                    <a href="#">
-                        <i class="icon-social-skype"></i>
-                        <span class="count-label red"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="icon-social-twitter"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="login.html">
-                        <i class="icon-export"></i>
-                    </a>
-                </li>
-            </ul>
         </div>
         <!-- END .user-profile -->
         <!-- BEGIN .side-nav -->
@@ -51,6 +33,14 @@
                             <i class="icon-document3"></i>
                         </span>
                         <span class="nav-title">Kriteria</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('admin/type') }}">
+                        <span class="has-icon">
+                            <i class="icon-expand"></i>
+                        </span>
+                        <span class="nav-title">Jenis Alternatif</span>
                     </a>
                 </li>
             </ul>
