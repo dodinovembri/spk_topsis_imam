@@ -74,7 +74,15 @@ Route::prefix('admin')->group(function () {
     Route::get('type/show/{id}', [App\Http\Controllers\Admin\TypeController::class, 'show'])->name('show');
     Route::get('type/edit/{id}', [App\Http\Controllers\Admin\TypeController::class, 'edit'])->name('edit');
     Route::post('type/update/{id}', [App\Http\Controllers\Admin\TypeController::class, 'update'])->name('update');
-    Route::get('type/destroy/{id}', [App\Http\Controllers\Admin\TypeController::class, 'destroy'])->name('destroy');    
+    Route::get('type/destroy/{id}', [App\Http\Controllers\Admin\TypeController::class, 'destroy'])->name('destroy'); 
+    
+    Route::get('criteria', [App\Http\Controllers\Admin\CriteriaController::class, 'index'])->name('index');
+    Route::get('criteria/create', [App\Http\Controllers\Admin\CriteriaController::class, 'create'])->name('create');
+    Route::post('criteria/store', [App\Http\Controllers\Admin\CriteriaController::class, 'store'])->name('store');
+    Route::get('criteria/show/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'show'])->name('show');
+    Route::get('criteria/edit/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'edit'])->name('edit');
+    Route::post('criteria/update/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'update'])->name('update');
+    Route::get('criteria/destroy/{id}', [App\Http\Controllers\Admin\CriteriaController::class, 'destroy'])->name('destroy');     
 
     Route::get('alternative', [App\Http\Controllers\Admin\AlternativeController::class, 'index'])->name('index');
     Route::get('alternative/create', [App\Http\Controllers\Admin\AlternativeController::class, 'create'])->name('create');

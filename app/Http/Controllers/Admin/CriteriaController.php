@@ -15,7 +15,7 @@ class CriteriaController extends Controller
      */
     public function index()
     {
-        $data['criteria'] = CriteriaModel::all();
+        $data['criterias'] = CriteriaModel::all();
         return view('admin.criteria.index', $data);
     }
 
@@ -37,19 +37,19 @@ class CriteriaController extends Controller
      */
     public function store(Request $request)
     {        
-        $check = CriteriaModel::where('name', $request->input('name'))->first();
+        $check = CriteriaModel::where('kode_kriteria', $request->input('kode_kriteria'))->first();
         if (empty($check)) {
             $insert = new CriteriaModel();
-            $insert->name = $request->name;        
-            $insert->attribute = $request->attribute;        
-            $insert->weight = $request->weight;        
-            $insert->created_by = auth()->user()->id;        
-            $insert->created_at = date("Y-m-d H:i:s");
+            $insert->kode_kriteria = $request->kode_kriteria;        
+            $insert->nama_kriteria = $request->nama_kriteria;        
+            $insert->jenis_kriteria = $request->jenis_kriteria;        
+            $insert->bobot = $request->bobot;        
+            $insert->keterangan = $request->keterangan;
             $insert->save();
 
-            return redirect(route('admin.criteria.index'))->with('message', 'Success add data !');
+            return redirect(url('admin/criteria'))->with('message', 'Sukses menambahkan data!');
         }else{
-            return redirect(route('admin.criteria.index'))->with('error', 'Data already exist !');            
+            return redirect(url('admin/criteria'))->with('error', 'Data sudah tersedia!');            
         }   
     }
 
@@ -87,14 +87,13 @@ class CriteriaController extends Controller
     public function update(Request $request, $id)
     {                
         $update = CriteriaModel::find($id);
-        $update->name = $request->name;        
-        $update->attribute = $request->attribute;        
-        $update->weight = $request->weight;                        
-        $update->updated_by = auth()->user()->id;
-        $update->updated_at = date("Y-m-d H:i:s");
+        $update->nama_kriteria = $request->nama_kriteria;        
+        $update->jenis_kriteria = $request->jenis_kriteria;        
+        $update->bobot = $request->bobot;        
+        $update->keterangan = $request->keterangan;
         $update->update();
 
-        return redirect(route('admin.criteria.index'))->with('message', 'Data success updated !');    
+        return redirect(url('admin/criteria'))->with('message', 'Data berhasil diupdate!');    
     }
 
     /**
@@ -108,6 +107,6 @@ class CriteriaController extends Controller
         $findtodelete = CriteriaModel::find($id);
         $findtodelete->delete();
 
-        return redirect(route('admin.criteria.index'))->with('message', 'Data success deleted !');
+        return redirect(url('admin/criteria'))->with('message', 'Data berhasil dihapus!');
     }
 }

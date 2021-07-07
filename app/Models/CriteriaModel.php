@@ -8,4 +8,5 @@ class CriteriaModel extends Model
 {
     public $table ='kriteria';
     public $guarded ='[]';
+    public $timestamps = false;
 }
