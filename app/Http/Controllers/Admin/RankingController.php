@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AlternativeValueModel;
 use App\Models\CriteriaModel;
 use App\Models\AlternativeModel;
 use Illuminate\Support\Facades\DB;
 
-class RecomendationController extends Controller
+class RankingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,84 +17,6 @@ class RecomendationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('recomendation.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('recomendation.show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function filter()
-    {
-        $data['criterias'] = CriteriaModel::with('criterion_value')->get();
-
-        return view('recomendation.filter', $data);
-    }
-
-    public function search(Request $request)
     {
         /**
          * 1. Define devider
@@ -132,28 +55,14 @@ class RecomendationController extends Controller
         }
 
         /**
-         * 3. time with weight and override weight here
+         * 3. time with weight
          */
         $alternative_after_multiple = [];
-        $weight = [];
-        $weight_criteria_id = [];
-        $weights = $request->criterias;
-        foreach ($weights as $key => $value) {
-            $split = explode("#", $value);
-            $nilai = $split[1];
-            $data_bobot = array('bobot' => $nilai);
-            array_push($weight, $data_bobot);
-            
-            $weight_id = $split[0];
-            $data_criteria_id = array('id_kriteria' => $weight_id);
-            array_push($weight_criteria_id, $data_criteria_id);            
-        }
-        
-        
+        $weight =  CriteriaModel::all();
         $total_weigth = count($weight);
         $j = 0;
         foreach ($alternative_value as $key => $value) {
-            $multiplication_result = $value['hasil_bagi'] * $weight[$j]['bobot'];
+            $multiplication_result = $value['hasil_bagi'] * $weight[$j]->bobot;
             $multiplication_data = array('id_alternatif' => $value['id_alternatif'], 'hasil_kali' => $multiplication_result);
             array_push($alternative_after_multiple, $multiplication_data);
             $j++;
@@ -176,17 +85,16 @@ class RecomendationController extends Controller
             $k = $i + 1;
         }
 
-        foreach ($weight_criteria_id as $key => $value) {
-            $find = CriteriaModel::where('id', $value['id_kriteria'])->first();
+        foreach ($weight as $key => $value) {
             // A+
-            if ($find->jenis_kriteria == "Benefit") {
+            if ($value->jenis_kriteria == "Benefit") {
                 $a_positive[] = max($alternative[$key]);
             } else {
                 $a_positive[] = min($alternative[$key]);
             }
 
             // A-
-            if ($find->jenis_kriteria == "Benefit") {
+            if ($value->jenis_kriteria == "Benefit") {
                 $a_negative[] = min($alternative[$key]);
             } else {
                 $a_negative[] = min($alternative[$key]);
@@ -256,7 +164,7 @@ class RecomendationController extends Controller
          * 5. Determine ranking
          */
 
-
+        
         $n = count($final_results);
         // sort with buble sort
         for ($i = 0; $i < $n; $i++) {
@@ -269,8 +177,73 @@ class RecomendationController extends Controller
             }
         }
 
-        
         $data['final_results'] = $final_results;
-        return view('recomendation.search_result', $data);
+        return view('admin.ranking.index', $data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        // 
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //    
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        // 
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        // 
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        // 
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        // 
     }
 }

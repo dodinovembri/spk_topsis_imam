@@ -73,8 +73,7 @@
                                         <div class="form-group row gutters">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label"></label>
                                             <div class="col-sm-9">
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                                <button type="button" class="btn btn-danger">Batal</button>
+                                                <a href="{{ url('admin/alternative') }}"><button type="button" class="btn btn-primary">Kembali</button></a>
                                             </div>
                                         </div>
                                     </div>

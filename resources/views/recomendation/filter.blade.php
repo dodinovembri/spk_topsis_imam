@@ -2,13 +2,7 @@
 
 @section('content')
 
-
-<div id="loader-overlay">
-    <div class="loader">
-        <img src="{{ asset('assets/content/images/2021/04/logo.png') }}" alt="Pathway blog" />
-        <i class="fas fa-spinner fa-pulse"></i>
-    </div>
-</div>
+@include('components.loader')
 
 <div class="site-content">
 
@@ -44,36 +38,16 @@
                                             <div class="cus-sign-box">
                                                 <div class="form-inner-content">
                                                     <form data-members-form="signin" action="{{ url('recomendation/search') }}" method="POST">
-                                                    @csrf
+                                                        @csrf
                                                         <h4>Temukan Rekomendasi Object Wisata</h4>
-                                                        <select name="" id="" class="form-control" style="margin-top: 10px;">
-                                                            <option value="" class="fomr-control">Jarak</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                        </select>
-                                                        <select name="" id="" class="form-control" style="margin-top: 10px;">
-                                                            <option value="" class="fomr-control">Biaya</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                        </select>
-                                                        <select name="" id="" class="form-control" style="margin-top: 10px;">
-                                                            <option value="" class="fomr-control">Fasilitas</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                        </select>
-                                                        <select name="" id="" class="form-control" style="margin-top: 10px;">
-                                                            <option value="" class="fomr-control">Aksesibilitas</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                            <option value="" class="fomr-control">ok</option>
-                                                        </select>
+                                                        <?php foreach ($criterias as $key => $value) { ?>
+                                                            <select name="criterias[]" id="" class="form-control" style="margin-top: 10px;" required>
+                                                                <option value="">{{ $value->nama_kriteria }}</option>
+                                                                <?php foreach ($value->criterion_value as $key2 => $value2) { ?>
+                                                                    <option name="criterion_value" value="{{ $value->id }}#{{ $value2->nilai }}" class="fomr-control">{{ $value2->keterangan }}</option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        <?php } ?>
                                                         <div class="subscribe-btn d-flex align-items-center">
                                                             <button type="submit" class="btn btn-sign">
                                                                 <span class="button-text">Keterangan Kriteria</span>
@@ -107,28 +81,5 @@
 
     @include('components.footer')
 </div>
-
-<!--search overlay content-->
-<div class="overlay-content">
-    <div class="overlay-close"></div>
-    <div class="search-area search-overly  d-flex justify-content-center aligh-items-center flex-column">
-        <div class="cus-container">
-            <div class="search-input-area d-flex align-items-center">
-                <input type="text" id="search-input" class="form-control" placeholder="type your keywords...">
-                <small class="esc">ESC</small>
-                <span><i class="fas fa-search"></i></span>
-                <div class="bar-dismiss"><span class="close-icons"><i class="fas fa-close"></i></span></div>
-            </div>
-            <!-- search result content -->
-            <div class="search-result">
-                <div class="custom">
-                    <h2 class="no-result"><span>0</span> results found in this keyword</h2>
-                    <div id="search-full-content"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<a href='#top' id='scroll-top' class='topbutton btn-hide'><span class='fas fa-angle-double-up'></span></a>
 
 @endsection

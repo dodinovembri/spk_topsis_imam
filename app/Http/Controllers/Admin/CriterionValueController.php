@@ -45,6 +45,7 @@ class CriterionValueController extends Controller
      */
     public function store(Request $request)
     {
+        return $request->all();
         $insert = new CriterionValueModel();
         $insert->id_kriteria = $request->session()->get('id_kriteria');
         $insert->keterangan = $request->keterangan;        

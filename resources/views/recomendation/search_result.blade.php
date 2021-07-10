@@ -23,258 +23,63 @@
                 <div class="col-lg-12 main-wrapper-content">
                     <main class="site-main style-two">
                         <div class="row" id="post-masonry">
-                            <div class="col-lg-4 post-loop odd">
-                                <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                    <div class="entry-thumb">
-                                        <figure class="thumb-wrap">
-                                            <a href="welcome/index.html">
-                                                <style>
-                                                    .circular--square {
-                                                        border-radius: 50%;
-                                                    }
+                            <?php $no = 0;
+                            foreach ($final_results as $key => $value) {
+                                $alternative = App\Models\AlternativeModel::where('id', $value['id_alternatif'])->first();
+                                $no++; ?>
+                                <div class="col-lg-4 post-loop odd">
+                                    <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
+                                        <div class="entry-thumb">
+                                            <figure class="thumb-wrap">
+                                                <a href="welcome/index.html">
+                                                    <style>
+                                                        .circular--square {
+                                                            border-radius: 50%;
+                                                        }
 
-                                                    .circular--square {
-                                                        border-top-left-radius: 50% 50%;
-                                                        border-top-right-radius: 50% 50%;
-                                                        border-bottom-right-radius: 50% 50%;
-                                                        border-bottom-left-radius: 50% 50%;
-                                                    }
-                                                </style>
-                                                <img class="circular--square" src="{{ asset('assets/content/images/size/w360/2021/04/05.jpg') }}" width="80px" loading="lazy" alt="Start here for a quick overview everything you need to know" />
-                                            </a>
-                                        </figure>
-                                        <!--./ thumb-wrap -->
-                                    </div>
-                                    <!--./ entry-thumb -->
-                                    <div class="content-entry-wrap">
-                                        <div class="entry-category">
-                                            <a href="tag/getting-started/index.html" class="tag tag- getting-started">Outdoor</a>
+                                                        .circular--square {
+                                                            border-top-left-radius: 50% 50%;
+                                                            border-top-right-radius: 50% 50%;
+                                                            border-bottom-right-radius: 50% 50%;
+                                                            border-bottom-left-radius: 50% 50%;
+                                                        }
+                                                    </style>
+                                                    <img class="circular--square" src="{{ asset('assets/content/images/size/w360/2021/04/05.jpg') }}" width="80px" loading="lazy" alt="Start here for a quick overview everything you need to know" />
+                                                </a>
+                                            </figure>
+                                            <!--./ thumb-wrap -->
                                         </div>
-                                        <!--./ entry-category -->
-                                        <h3 class="entry-title">
-                                            <a href="welcome/index.html">
-                                                Start here for a quick overview everything you need to know
-                                            </a>
-                                        </h3>
-                                        <!--./ entry-title -->
-                                        <div class="entry-user">
-                                            <div class="info">
-                                                <div class="author-name">
-                                                    <span>By - <a href="author/ghost/index.html">Johan Doe</a></span> / <span><time datetime="2021-04-18">18 Apr 2021</time></span>
+                                        <!--./ entry-thumb -->
+                                        <div class="content-entry-wrap">
+                                            <div class="entry-category">
+                                                <a href="tag/getting-started/index.html" class="tag tag- getting-started">{{ $no }}</a>
+                                            </div>
+                                            <!--./ entry-category -->
+                                            <h3 class="entry-title">
+                                                <a href="welcome/index.html">
+                                                    {{ $alternative->nama_alternatif }}
+                                                </a>
+                                            </h3>
+                                            <!--./ entry-title -->
+                                            <div class="entry-user">
+                                                <div class="info">
+                                                    <div class="author-name">
+                                                        <span>{{ $value['preferensi'] }}</span>
+                                                    </div>
+                                                    <!--./ entry-time -->
                                                 </div>
-                                                <!--./ entry-time -->
+                                            </div>
+                                            <div class="entry-content">
+                                                <p>We've crammed the important of a information to help you get started with Ghost into this one post.</p>
+                                            </div>
+                                            <div class="entry-footer">
+                                                <a href="welcome/index.html" class="more-links">Continue Reading -</a>
                                             </div>
                                         </div>
-                                        <div class="entry-content">
-                                            <p>We've crammed the important of a information to help you get started with Ghost into this one post.</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <a href="welcome/index.html" class="more-links">Continue Reading -</a>
-                                        </div>
-                                    </div>
-                                    <!--./ content-entry-wrap -->
-                                </article>
-                            </div>
-                            <div class="col-lg-4 post-loop even">
-                                <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                    <div class="entry-thumb">
-                                        <figure class="thumb-wrap">
-                                            <a href="design/index.html">
-                                                <img class="post-card-image" src="{{ asset('assets/content/images/size/w360/2021/04/09-1.jpg') }}" loading="lazy" alt="Customizing a brand and design settings is awesome experience" />
-                                            </a>
-                                        </figure>
-                                        <!--./ thumb-wrap -->
-                                    </div>
-                                    <!--./ entry-thumb -->
-                                    <div class="content-entry-wrap">
-                                        <div class="entry-category">
-                                            <a href="tag/getting-started/index.html" class="tag tag- getting-started">Outdoor</a>
-                                        </div>
-                                        <!--./ entry-category -->
-                                        <h3 class="entry-title">
-                                            <a href="design/index.html">
-                                                Customizing a brand and design settings is awesome experience
-                                            </a>
-                                        </h3>
-                                        <!--./ entry-title -->
-                                        <div class="entry-user">
-                                            <div class="info">
-                                                <div class="author-name">
-                                                    <span>By - <a href="author/ghost/index.html">Johan Doe</a></span> / <span><time datetime="2021-04-18">18 Apr 2021</time></span>
-                                                </div>
-                                                <!--./ entry-time -->
-                                            </div>
-                                        </div>
-                                        <div class="entry-content">
-                                            <p>How to tweak few settings in Ghost to transform your site from generic template to a custom brand.</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <a href="design/index.html" class="more-links">Continue Reading -</a>
-                                        </div>
-                                    </div>
-                                    <!--./ content-entry-wrap -->
-                                </article>
-                            </div>
-                            <div class="col-lg-4 post-loop odd">
-                                <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                    <div class="entry-thumb">
-                                        <figure class="thumb-wrap">
-                                            <a href="write/index.html">
-                                                <img class="post-card-image" src="{{ asset('assets/content/images/size/w360/2021/04/07-1.jpg') }}" loading="lazy" alt="Writing and managing content in Ghost, and advanced guide" />
-                                            </a>
-                                        </figure>
-                                        <!--./ thumb-wrap -->
-                                    </div>
-                                    <!--./ entry-thumb -->
-                                    <div class="content-entry-wrap">
-                                        <div class="entry-category">
-                                            <a href="tag/getting-started/index.html" class="tag tag- getting-started">Outdoor</a>
-                                        </div>
-                                        <!--./ entry-category -->
-                                        <h3 class="entry-title">
-                                            <a href="write/index.html">
-                                                Writing and managing content in Ghost, and advanced guide
-                                            </a>
-                                        </h3>
-                                        <!--./ entry-title -->
-                                        <div class="entry-user">
-                                            <div class="info">
-                                                <div class="author-name">
-                                                    <span>By - <a href="author/ghost/index.html">Johan Doe</a></span> / <span><time datetime="2021-04-18">18 Apr 2021</time></span>
-                                                </div>
-                                                <!--./ entry-time -->
-                                            </div>
-                                        </div>
-                                        <div class="entry-content">
-                                            <p>A full overview of all the features of built into the Ghost editor, including powerful workflow automations.</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <a href="write/index.html" class="more-links">Continue Reading -</a>
-                                        </div>
-                                    </div>
-                                    <!--./ content-entry-wrap -->
-                                </article>
-                            </div>
-                            <div class="col-lg-4 post-loop even">
-                                <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                    <div class="entry-thumb">
-                                        <figure class="thumb-wrap">
-                                            <a href="portal/index.html">
-                                                <img class="post-card-image" src="{{ asset('assets/content/images/size/w360/2021/04/08-1.jpg') }}" loading="lazy" alt="Building an audience with subscriber and also signups" />
-                                            </a>
-                                        </figure>
-                                        <!--./ thumb-wrap -->
-                                    </div>
-                                    <!--./ entry-thumb -->
-                                    <div class="content-entry-wrap">
-                                        <div class="entry-category">
-                                            <a href="tag/getting-started/index.html" class="tag tag- getting-started">Outdoor</a>
-                                        </div>
-                                        <!--./ entry-category -->
-                                        <h3 class="entry-title">
-                                            <a href="portal/index.html">
-                                                Building an audience with subscriber and also signups
-                                            </a>
-                                        </h3>
-                                        <!--./ entry-title -->
-                                        <div class="entry-user">
-                                            <div class="info">
-                                                <div class="author-name">
-                                                    <span>By - <a href="author/ghost/index.html">Johan Doe</a></span> / <span><time datetime="2021-04-18">18 Apr 2021</time></span>
-                                                </div>
-                                                <!--./ entry-time -->
-                                            </div>
-                                        </div>
-                                        <div class="entry-content">
-                                            <p>How Ghost allows to turn your blog anonymous readers into audiences of active subscribers, so you know.</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <a href="portal/index.html" class="more-links">Continue Reading -</a>
-                                        </div>
-                                    </div>
-                                    <!--./ content-entry-wrap -->
-                                </article>
-                            </div>
-                            <div class="col-lg-4 post-loop odd">
-                                <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                    <div class="entry-thumb">
-                                        <figure class="thumb-wrap">
-                                            <a href="sell/index.html">
-                                                <img class="post-card-image" src="{{ asset('assets/content/images/size/w360/2021/04/10-2.jpg') }}" loading="lazy" alt="Selling premium thing memberships with the recurring revenue" />
-                                            </a>
-                                        </figure>
-                                        <!--./ thumb-wrap -->
-                                    </div>
-                                    <!--./ entry-thumb -->
-                                    <div class="content-entry-wrap">
-                                        <div class="entry-category">
-                                            <a href="tag/getting-started/index.html" class="tag tag- getting-started">Outdoor</a>
-                                        </div>
-                                        <!--./ entry-category -->
-                                        <h3 class="entry-title">
-                                            <a href="sell/index.html">
-                                                Selling premium thing memberships with the recurring revenue
-                                            </a>
-                                        </h3>
-                                        <!--./ entry-title -->
-                                        <div class="entry-user">
-                                            <div class="info">
-                                                <div class="author-name">
-                                                    <span>By - <a href="author/ghost/index.html">Johan Doe</a></span> / <span><time datetime="2021-04-18">18 Apr 2021</time></span>
-                                                </div>
-                                                <!--./ entry-time -->
-                                            </div>
-                                        </div>
-                                        <div class="entry-content">
-                                            <p>For creators and aspiring contents entrepreneurs looking to generate a sustainable recurring revenu</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <a href="sell/index.html" class="more-links">Continue Reading -</a>
-                                        </div>
-                                    </div>
-                                    <!--./ content-entry-wrap -->
-                                </article>
-                            </div>
-                            <div class="col-lg-4 post-loop even">
-                                <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                    <div class="entry-thumb">
-                                        <figure class="thumb-wrap">
-                                            <a href="grow/index.html">
-                                                <img class="post-card-image" src="{{ asset('assets/content/images/size/w360/2021/04/09-1.jpg') }}" loading="lazy" alt="How to grow your and business around also the audience" />
-                                            </a>
-                                        </figure>
-                                        <!--./ thumb-wrap -->
-                                    </div>
-                                    <!--./ entry-thumb -->
-                                    <div class="content-entry-wrap">
-                                        <div class="entry-category">
-                                            <a href="tag/getting-started/index.html" class="tag tag- getting-started">Outdoor</a>
-                                        </div>
-                                        <!--./ entry-category -->
-                                        <h3 class="entry-title">
-                                            <a href="grow/index.html">
-                                                How to grow your and business around also the audience
-                                            </a>
-                                        </h3>
-                                        <!--./ entry-title -->
-                                        <div class="entry-user">
-                                            <div class="info">
-                                                <div class="author-name">
-                                                    <span>By - <a href="author/ghost/index.html">Johan Doe</a></span> / <span><time datetime="2021-04-18">18 Apr 2021</time></span>
-                                                </div>
-                                                <!--./ entry-time -->
-                                            </div>
-                                        </div>
-                                        <div class="entry-content">
-                                            <p>A guide to collaborating with other staff users to publish, and some of resources to help you.</p>
-                                        </div>
-                                        <div class="entry-footer">
-                                            <a href="grow/index.html" class="more-links">Continue Reading -</a>
-                                        </div>
-                                    </div>
-                                    <!--./ content-entry-wrap -->
-                                </article>
-                            </div>
+                                        <!--./ content-entry-wrap -->
+                                    </article>
+                                </div>
+                            <?php } ?>
                         </div>
                     </main>
                 </div>

@@ -13,7 +13,7 @@
                                 <div class="col-6 col-lg-12">
                                     <div class="site-branding">
                                         <a href="{{ url('/') }}">
-                                            <img src="{{ asset('assets/content/images/2021/04/logo.png') }}" alt="Pathway blog" />
+                                            <img src="{{ asset('logo/logo.png') }}" width="80px" alt="Pathway blog" />
                                         </a>
                                     </div><!-- /.site-branding -->
                                 </div>

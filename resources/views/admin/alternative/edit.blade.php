@@ -63,20 +63,20 @@
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" name="gambar" class="form-control" placeholder="Longitude" required>
+                                                    <input type="file" name="gambar" class="form-control" placeholder="Longitude">
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                                 <div class="col-sm-9">
-                                                    <textarea type="file" rows="3" name="keterangan" class="form-control">{{ $alternative->keterangan }}</textarea>
+                                                    <textarea type="file" rows="7" name="keterangan" class="form-control">{{ $alternative->keterangan }}</textarea>
                                                 </div>
                                             </div><br>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label"></label>
                                                 <div class="col-sm-9">
                                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                                    <button type="button" class="btn btn-danger">Batal</button>
+                                                    <a href="{{ url('admin/alternative') }}"><button type="button" class="btn btn-danger">Batal</button></a>
                                                 </div>
                                             </div>
                                         </div>

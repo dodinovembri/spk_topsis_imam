@@ -14,4 +14,14 @@ class AlternativeValueModel extends Model
     {
         return $this->belongsTo('App\Models\AlternativeModel', 'id_alternatif');
     }
+
+    public function criteria()
+    {
+        return $this->belongsTo('App\Models\CriteriaModel', 'id_kriteria');
+    }
+
+    public function criterion_value()
+    {
+        return $this->belongsTo('App\Models\CriterionValueModel', 'id_nilai_kriteria');
+    }
 }

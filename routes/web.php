@@ -99,4 +99,20 @@ Route::prefix('admin')->group(function () {
     Route::get('alternative/edit/{id}', [App\Http\Controllers\Admin\AlternativeController::class, 'edit'])->name('edit');
     Route::post('alternative/update/{id}', [App\Http\Controllers\Admin\AlternativeController::class, 'update'])->name('update');
     Route::get('alternative/destroy/{id}', [App\Http\Controllers\Admin\AlternativeController::class, 'destroy'])->name('destroy');    
+
+    Route::get('alternative_values/{id}', [App\Http\Controllers\Admin\AlternativeValueController::class, 'index'])->name('index');
+    Route::get('alternative_value/create', [App\Http\Controllers\Admin\AlternativeValueController::class, 'create'])->name('create');
+    Route::post('alternative_value/store', [App\Http\Controllers\Admin\AlternativeValueController::class, 'store'])->name('store');
+    Route::get('alternative_value/show/{id}', [App\Http\Controllers\Admin\AlternativeValueController::class, 'show'])->name('show');
+    Route::get('alternative_value/edit/{id}', [App\Http\Controllers\Admin\AlternativeValueController::class, 'edit'])->name('edit');
+    Route::post('alternative_value/update/{id}', [App\Http\Controllers\Admin\AlternativeValueController::class, 'update'])->name('update');
+    Route::get('alternative_value/destroy/{id}', [App\Http\Controllers\Admin\AlternativeValueController::class, 'destroy'])->name('destroy');     
+
+    Route::get('ranking', [App\Http\Controllers\Admin\RankingController::class, 'index'])->name('index');
+    Route::get('ranking/create', [App\Http\Controllers\Admin\RankingController::class, 'create'])->name('create');
+    Route::post('ranking/store', [App\Http\Controllers\Admin\RankingController::class, 'store'])->name('store');
+    Route::get('ranking/show/{id}', [App\Http\Controllers\Admin\RankingController::class, 'show'])->name('show');
+    Route::get('ranking/edit/{id}', [App\Http\Controllers\Admin\RankingController::class, 'edit'])->name('edit');
+    Route::post('ranking/update/{id}', [App\Http\Controllers\Admin\RankingController::class, 'update'])->name('update');
+    Route::get('ranking/destroy/{id}', [App\Http\Controllers\Admin\RankingController::class, 'destroy'])->name('destroy');      
 });

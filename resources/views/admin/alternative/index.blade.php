@@ -52,7 +52,7 @@
                                             $no++; ?>
                                             <tr>
                                                 <td>{{ $no }}</td>
-                                                <td>{{ $value->kode_alternatif }}</td>
+                                                <td><a href="{{ url('admin/alternative_values', $value->id) }}"><b><u>{{ $value->kode_alternatif }}</u></b></a></td>
                                                 <td>{{ $value->nama_alternatif }}</td>
                                                 <td>{{ $value->latitude }}</td>
                                                 <td>{{ $value->longitude }}</td>

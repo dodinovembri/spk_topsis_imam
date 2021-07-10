@@ -21,7 +21,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ url('admin/alternative') }}">Alternatif</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Buat Alternatif</li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/alternative_values', Session::get('id_alternatif')) }}">Nilai Alternatif</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Nilai Alternatif</li>
                         </ol>
                     </nav>
                 </div>
@@ -32,51 +33,39 @@
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="card">
-                                    <form action="{{ url('admin/alternative/store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ url('admin/alternative_value/update', $alternative_value->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-header">Buat Alternatif</div>
                                         <div class="card-body">
                                             <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Alternatif</label>
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Alternatif</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="kode_alternatif" class="form-control" placeholder="Kode Alternatif" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Alternatif</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" name="nama_alternatif" class="form-control" placeholder="Nama Alternatif" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Latitude</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" name="latitude" class="form-control" placeholder="Latitude" required>
-                                                </div>
-                                            </div> 
-                                            <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Logitude</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" name="longitude" class="form-control" placeholder="Longitude" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar</label>
-                                                <div class="col-sm-9">
-                                                    <input type="file" name="gambar" class="form-control" placeholder="Longitude" required>
+                                                    <input type="text" class="form-control" value="{{ $alternative_value->alternative->kode_alternatif }} - {{ $alternative_value->alternative->nama_alternatif }}" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                                 <div class="col-sm-9">
-                                                    <textarea type="file" rows="7" name="keterangan" class="form-control" placeholder="Longitude"> </textarea>
+                                                    <input type="text" name="keterangan" class="form-control" placeholder="Keterangan" value="{{ $alternative_value->criteria->nama_kriteria }}" required>
                                                 </div>
-                                            </div><br>
+                                            </div>
+                                            <div class="form-group row gutters">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nilai</label>
+                                                <div class="col-sm-9">
+                                                    <select name="criterion_value" class="form-control" id="" required>
+                                                        <option value="{{ $alternative_value->id_nilai_kriteria }}">{{ $alternative_value->criterion_value->keterangan }}</option>
+                                                        <?php foreach ($criterion_value as $key => $value) { ?>
+                                                            <option value="{{ $value->id }}">{{ $value->keterangan }}</option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <br>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label"></label>
                                                 <div class="col-sm-9">
                                                     <button type="submit" class="btn btn-primary">Simpan</button>
-                                                    <a href="{{ url('admin/alternative') }}"><button type="button" class="btn btn-danger">Batal</button></a>
+                                                    <a href="{{ url('admin/alternative_values', Session::get('id_alternatif')) }}"><button type="button" class="btn btn-danger">Batal</button></a>
                                                 </div>
                                             </div>
                                         </div>

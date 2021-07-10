@@ -8,7 +8,6 @@ use App\Models\AlternativeModel;
 use App\Models\AlternativeValueModel;
 use App\Models\CriteriaModel;
 use App\Models\CriterionValueModel;
-use Illuminate\Support\Facades\Validator;
 
 class AlternativeValueController extends Controller
 {
@@ -17,10 +16,18 @@ class AlternativeValueController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $data['alternative'] = AlternativeModel::all();
-        return view('admin.alternative.index', $data);
+        $alternative = AlternativeModel::find($id);
+        session([
+            'id_alternatif' => $id,
+            'kode_alternatif' => $alternative->kode_alternatif,
+            'nama_alternatif' => $alternative->nama_alternatif
+        ]);
+
+        $data['alternative_values'] = AlternativeValueModel::with('alternative')->with('criteria')->with('criterion_value')->where('id_alternatif', $id)->get();
+
+        return view('admin.alternative_value.index', $data);
     }
 
     /**
@@ -30,7 +37,9 @@ class AlternativeValueController extends Controller
      */
     public function create()
     {
-        return view('admin.alternative.create');
+        $data['criterias'] = CriteriaModel::with('criterion_value')->get();
+
+        return view('admin.alternative_value.create', $data);
     }
 
     /**
@@ -41,39 +50,21 @@ class AlternativeValueController extends Controller
      */
     public function store(Request $request)
     {
-        set_time_limit(0);
-        $validator = Validator::make($request->all(), [
-           'image'    => 'max:5000' 
-        ]);
+        $findtodelete = AlternativeValueModel::where('id_alternatif', $request->session()->get('id_alternatif'))->get();
+        foreach ($findtodelete as $key => $value) {
+            $value->delete();
+        }
 
-        if ($validator->fails()) {
-            return redirect()->route('admin.alternative.create')->withInput()->withErrors($validator);
-        }else{
-
-            $check = AlternativeModel::where('code', $request->input('code'))->first();
-            if (empty($check)) {
-            
-                $file                       = $request->file('image');
-                $fileName3                  = uniqid() . '.'. $file->getClientOriginalExtension();
-                $request->file('image')->move("img/", $fileName3);
-
-                $insert = new AlternativeModel();
-                $insert->code = $request->code;        
-                $insert->name = $request->name;        
-                $insert->value_set = 0;
-                $insert->description = $request->description;        
-                $insert->image = $fileName3;        
-                $insert->ket = $request->ket;        
-                $insert->location = $request->location;        
-                $insert->created_by = auth()->user()->id;        
-                $insert->created_at = date("Y-m-d H:i:s");
-                $insert->save();
-
-                return redirect(route('admin.alternative.index'))->with('message', 'Success add data !');
-            }else{
-                return redirect(route('admin.alternative.index'))->with('error', 'Data already exist !');            
-            }            
-        }        
+        $weight = $request->weight;
+        foreach ($weight as $key => $value) {
+            $split = explode("#", $value);
+            $insert = new AlternativeValueModel();
+            $insert->id_alternatif = $request->session()->get('id_alternatif');
+            $insert->id_kriteria = $split[0];
+            $insert->id_nilai_kriteria = $split[1];
+            $insert->save();
+        }
+        return redirect(url('admin/alternative_values', $request->session()->get('id_alternatif')))->with('message', 'Data Nilai Kriteria berhasil di simpan!');
     }
 
     /**
@@ -96,8 +87,11 @@ class AlternativeValueController extends Controller
      */
     public function edit($id)
     {
-        $data['alternative'] = AlternativeModel::find($id);
-        return view('admin.alternative.edit', $data);
+        $alternative_value = AlternativeValueModel::with('alternative')->with('criteria')->with('criterion_value')->where('id', $id)->first();
+        $data['alternative_value'] = $alternative_value;
+        $data['criterion_value'] = CriterionValueModel::where('id_kriteria', $alternative_value->id_kriteria)->get();
+
+        return view('admin.alternative_value.edit', $data);
     }
 
     /**
@@ -109,31 +103,10 @@ class AlternativeValueController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        set_time_limit(0);
-        $validator = Validator::make($request->all(), [
-           'image'    => 'max:5000' 
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('admin.alternative.create')->withInput()->withErrors($validator);
-        }else{
-
-            $update = AlternativeModel::find($id);            
-            $update->name = $request->name;        
-            $update->description = $request->description; 
-            if (isset($request->image)) {                       
-                $update->image = $request->image;        
-            }       
-            $update->ket = $request->ket;        
-            $update->location = $request->location;        
-            $update->updated_by = auth()->user()->id;
-            $update->updated_at = date("Y-m-d H:i:s");
-            $update->update();            
-            return redirect(route('admin.alternative.index'))->with('message', 'Data success updated !'); 
-
-            }            
-                  
+        $update = AlternativeValueModel::find($id);
+        $update->id_nilai_kriteria = $request->criterion_value;
+        $update->update();
+        return redirect(url('admin/alternative_values', $request->session()->get('id_alternatif')))->with('message', 'Data berhasil diupdate!');
     }
 
     /**
@@ -144,64 +117,7 @@ class AlternativeValueController extends Controller
      */
     public function destroy($id)
     {
-        $findtodelete = AlternativeModel::find($id);
-        $findtodelete->delete();
-
-        return redirect(route('admin.alternative.index'))->with('message', 'Data success deleted !');
+        // 
     }
-
-    public function add_value($id)
-    {
-        $data['alternative_id'] = $id;
-        $data['alternative'] = AlternativeModel::find($id);
-        $data['criteria'] = CriteriaModel::all();
-        return view('admin.alternative.add_value', $data);
-    }   
-
-    public function store_alternative_value(Request $request, $alternative_id)
-    {                
-        $find = AlternativeValueModel::where('alternative_id', $alternative_id)->get();
-        if (empty($find)) {
-            $sumCritetrion = count($request->value);
-            for ($i=0; $i < $sumCritetrion; $i++) { 
-             $data = explode("&" , $request->value[$i]);
-
-             $insert = new AlternativeValueModel();            
-             $insert->alternative_id = $alternative_id;  
-             $insert->criteria_id = $data[1];        
-             $insert->criterion_value_id = $data[0];        
-             $insert->created_by = auth()->user()->id;        
-             $insert->created_at = date("Y-m-d H:i:s");
-             $insert->save();                
-         }            
-            $update_alternative = AlternativeModel::find($alternative_id);
-            $update_alternative->value_set = 1;
-            $update_alternative->update();
-            return redirect(route('admin.alternative.index'))->with('message', 'Success set up value !');
-     }else{       
-
-        $findtodelete = AlternativeValueModel::where('alternative_id', $alternative_id)->get();
-        foreach ($findtodelete as $key => $value) {
-            $value->delete();
-        }
-
-            $sumCritetrion = count($request->value);
-            for ($i=0; $i < $sumCritetrion; $i++) { 
-             $data = explode("&" , $request->value[$i]);
-
-             $insert = new AlternativeValueModel();            
-             $insert->alternative_id = $alternative_id;  
-             $insert->criteria_id = $data[0];        
-             $insert->criterion_value_id = $data[1];        
-             $insert->created_by = auth()->user()->id;        
-             $insert->created_at = date("Y-m-d H:i:s");
-             $insert->save();   
-         }   
-            $update_alternative = AlternativeModel::find($alternative_id);
-            $update_alternative->value_set = 1;
-            $update_alternative->update();         
-            return redirect(route('admin.alternative.index'))->with('message', 'Success set up value !');     
-     }       
-
- }     
+    
 }

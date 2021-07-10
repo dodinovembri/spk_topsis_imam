@@ -93,9 +93,12 @@ class AlternativeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $file                       = $request->file('gambar');
-        $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
-        $request->file('gambar')->move("img/alternative/", $fileName3);
+        $gambar = $request->file('gambar');
+        if (isset($gambar)) {
+            $file                       = $request->file('gambar');
+            $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
+            $request->file('gambar')->move("img/alternative/", $fileName3);
+        }
 
         $update = AlternativeModel::find($id);
         $update->kode_alternatif = $request->kode_alternatif;
