@@ -69,7 +69,7 @@
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                                 <div class="col-sm-9">
-                                                    <textarea type="file" rows="7" name="keterangan" class="form-control">{{ $alternative->keterangan }}</textarea>
+                                                    <textarea type="file" rows="7" id="editor" name="keterangan" class="form-control">{{ $alternative->keterangan }}</textarea>
                                                 </div>
                                             </div><br>
                                             <div class="form-group row gutters">

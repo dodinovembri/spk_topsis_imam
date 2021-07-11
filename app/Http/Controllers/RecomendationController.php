@@ -49,7 +49,8 @@ class RecomendationController extends Controller
      */
     public function show($id)
     {
-        return view('recomendation.show');
+        $data['alternative'] = AlternativeModel::find($id);
+        return view('recomendation.show', $data);
     }
 
     /**
