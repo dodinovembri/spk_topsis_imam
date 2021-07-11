@@ -26,7 +26,7 @@
                                     <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
                                         <div class="entry-thumb">
                                             <figure class="thumb-wrap">
-                                                <a href="welcome/index.html">
+                                                <a href="{{ url('recomendation/show', $alternative->id) }}">
                                                     <img src="{{ asset('img/alternative') }}/{{ $alternative->gambar }}" width="1px" alt="Start here for a quick overview everything you need to know" />
                                                 </a>
                                             </figure>
@@ -39,7 +39,7 @@
                                             </div>
                                             <!--./ entry-category -->
                                             <h5 class="">
-                                                <a href="welcome/index.html">
+                                                <a href="{{ url('recomendation/show', $alternative->id) }}">
                                                     {{ $alternative->nama_alternatif }}
                                                 </a>
                                             </h5>
@@ -56,7 +56,7 @@
                                                 <p style="text-align: justify; ">{{ substr($alternative->keterangan, 0, 100) }}...</p>
                                             </div>
                                             <div class="entry-footer">
-                                                <a href="welcome/index.html" class="more-links">Continue Reading -</a>
+                                                <a href="{{ url('recomendation/show', $alternative->id) }}" class="more-links">Continue Reading -</a>
                                             </div>
                                         </div>
                                         <!--./ content-entry-wrap -->
