@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ContactUsModel;
 
 class ContactController extends Controller
 {
@@ -34,7 +35,14 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = new ContactUsModel();
+        $insert->nama = $request->nama;        
+        $insert->email = $request->email;        
+        $insert->subject = $request->subject;        
+        $insert->pesan = $request->pesan;        
+        $insert->save();
+        
+        return redirect(url('contact'))->with('message', 'Pesan anda telah dikirimkan!');
     }
 
     /**

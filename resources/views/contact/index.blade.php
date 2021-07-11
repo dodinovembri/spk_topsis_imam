@@ -25,12 +25,17 @@
                                         <div class="row justify-content-center">
                                             <div class="col-lg-8">
                                                 <div class="contact-form">
-                                                    <form class="row" action="https://formspree.io/domain@gmail.com" method="POST" id="contact-form">
+                                                    @if(session()->has('message'))
+                                                    <center><button type="button" class="btn btn-primary btn-cus-siz mt-20">{{ session()->get('message') }}</button></center><br>
+                                                    @endif
+                                                    
+                                                    <form class="row" action="{{ url('contact/store') }}" method="POST" id="contact-form">
+                                                        @csrf
                                                         <div class="col-lg-12">
                                                             <div class="form-group">
                                                                 <div class="input-wrapper">
                                                                     <label>Your Name</label>
-                                                                    <input name="user" type="text" class="form-control" required>
+                                                                    <input name="nama" type="text" class="form-control" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -54,7 +59,7 @@
                                                             <div class="form-group">
                                                                 <div class="input-text-form">
                                                                     <label>Message</label>
-                                                                    <textarea class="form-control" name="message" cols="10" rows="10" equired></textarea>
+                                                                    <textarea class="form-control" name="pesan" cols="10" rows="10" required></textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -82,27 +87,6 @@
     @include('components.footer')
 </div>
 
-<!--search overlay content-->
-<div class="overlay-content">
-    <div class="overlay-close"></div>
-    <div class="search-area search-overly  d-flex justify-content-center aligh-items-center flex-column">
-        <div class="cus-container">
-            <div class="search-input-area d-flex align-items-center">
-                <input type="text" id="search-input" class="form-control" placeholder="type your keywords...">
-                <small class="esc">ESC</small>
-                <span><i class="fas fa-search"></i></span>
-                <div class="bar-dismiss"><span class="close-icons"><i class="fas fa-close"></i></span></div>
-            </div>
-            <!-- search result content -->
-            <div class="search-result">
-                <div class="custom">
-                    <h2 class="no-result"><span>0</span> results found in this keyword</h2>
-                    <div id="search-full-content"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <a href='#top' id='scroll-top' class='topbutton btn-hide'><span class='fas fa-angle-double-up'></span></a>
 
 @endsection
