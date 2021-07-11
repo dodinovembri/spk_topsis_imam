@@ -19,4 +19,9 @@ class AlternativeModel extends Model
     {
         return $this->belongsTo('App\Models\TypeModel', 'id_jenis_alternatif');
     }
+
+    public function gallery()
+    {
+    	return $this->hasMany('App\Models\AlternativeGalleryModel', 'id_alternatif', 'id');
+    }    
 }

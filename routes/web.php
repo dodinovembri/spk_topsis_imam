@@ -122,5 +122,13 @@ Route::prefix('admin')->group(function () {
     Route::get('slider/show/{id}', [App\Http\Controllers\Admin\SliderController::class, 'show'])->name('show');
     Route::get('slider/edit/{id}', [App\Http\Controllers\Admin\SliderController::class, 'edit'])->name('edit');
     Route::post('slider/update/{id}', [App\Http\Controllers\Admin\SliderController::class, 'update'])->name('update');
-    Route::get('slider/destroy/{id}', [App\Http\Controllers\Admin\SliderController::class, 'destroy'])->name('destroy');     
+    Route::get('slider/destroy/{id}', [App\Http\Controllers\Admin\SliderController::class, 'destroy'])->name('destroy');  
+    
+    Route::get('alternative_galleries/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'index'])->name('index');
+    Route::get('alternative_gallery/create', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'create'])->name('create');
+    Route::post('alternative_gallery/store', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'store'])->name('store');
+    Route::get('alternative_gallery/show/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'show'])->name('show');
+    Route::get('alternative_gallery/edit/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'edit'])->name('edit');
+    Route::post('alternative_gallery/update/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'update'])->name('update');
+    Route::get('alternative_gallery/destroy/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'destroy'])->name('destroy');  
 });

@@ -39,32 +39,78 @@
                                 <figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption">
                                     <div class="kg-gallery-container">
                                         <div class="kg-gallery-row">
-                                            <div class="kg-gallery-image"><img src="{{ asset('assets/content/images/2021/04/07-2.jpg') }}" width="1920" height="1585" loading="lazy" alt srcset="https://pathway.the9t9.com/content/images/size/w600/2021/04/07-2.jpg 600w, https://pathway.the9t9.com/content/images/size/w1000/2021/04/07-2.jpg 1000w, https://pathway.the9t9.com/content/images/size/w1600/2021/04/07-2.jpg 1600w, https://pathway.the9t9.com/content/images/2021/04/07-2.jpg 1920w" sizes="(min-width: 720px) 720px"></div>
-                                            <div class="kg-gallery-image"><img src="{{ asset('assets/content/images/2021/04/08-2.jpg') }}" width="1920" height="1585" loading="lazy" alt srcset="https://pathway.the9t9.com/content/images/size/w600/2021/04/08-2.jpg 600w, https://pathway.the9t9.com/content/images/size/w1000/2021/04/08-2.jpg 1000w, https://pathway.the9t9.com/content/images/size/w1600/2021/04/08-2.jpg 1600w, https://pathway.the9t9.com/content/images/2021/04/08-2.jpg 1920w" sizes="(min-width: 720px) 720px"></div>
-                                            <div class="kg-gallery-image"><img src="{{ asset('assets/content/images/2021/04/13-3.jpg') }}" width="1920" height="1585" loading="lazy" alt srcset="https://pathway.the9t9.com/content/images/size/w600/2021/04/13-3.jpg 600w, https://pathway.the9t9.com/content/images/size/w1000/2021/04/13-3.jpg 1000w, https://pathway.the9t9.com/content/images/size/w1600/2021/04/13-3.jpg 1600w, https://pathway.the9t9.com/content/images/2021/04/13-3.jpg 1920w" sizes="(min-width: 720px) 720px"></div>
+                                            <?php foreach ($alternative->gallery as $key => $value) { ?>
+                                                <div class="kg-gallery-image">
+                                                    <img src="{{ asset('img/gallery') }}/{{ $value->gambar }}" width="1920" height="1585" loading="lazy" sizes="(min-width: 720px) 720px">
+                                                </div>
+                                            <?php if ($key == 2) {
+                                                break;
+                                            } } ?>
                                         </div>
                                         <div class="kg-gallery-row">
-                                            <div class="kg-gallery-image"><img src="{{ asset('assets/') }}content/images/2021/04/15-1.jpg" width="1920" height="1302" loading="lazy" alt srcset="https://pathway.the9t9.com/content/images/size/w600/2021/04/15-1.jpg 600w, https://pathway.the9t9.com/content/images/size/w1000/2021/04/15-1.jpg 1000w, https://pathway.the9t9.com/content/images/size/w1600/2021/04/15-1.jpg 1600w, https://pathway.the9t9.com/content/images/2021/04/15-1.jpg 1920w" sizes="(min-width: 720px) 720px"></div>
-                                            <div class="kg-gallery-image"><img src="{{ asset('assets/content/images/2021/04/16-1.jpg') }}" width="1920" height="1648" loading="lazy" alt srcset="https://pathway.the9t9.com/content/images/size/w600/2021/04/16-1.jpg 600w, https://pathway.the9t9.com/content/images/size/w1000/2021/04/16-1.jpg 1000w, https://pathway.the9t9.com/content/images/size/w1600/2021/04/16-1.jpg 1600w, https://pathway.the9t9.com/content/images/2021/04/16-1.jpg 1920w" sizes="(min-width: 720px) 720px"></div>
+                                            <?php foreach ($alternative->gallery as $key => $value) {
+                                                if ($key > 2) { ?>
+                                                    <div class="kg-gallery-image">
+                                                        <img src="{{ asset('img/gallery') }}/{{ $value->gambar }}" width="1920" height="1302" loading="lazy" sizes="(min-width: 720px) 720px">
+                                                    </div>
+                                                <?php } ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <figcaption>Beautiful places</figcaption>
                                 </figure>
-                                <figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption">
+                                <figure class="kg-card kg-image-card kg-card-hascaption">
                                     <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                        <div id="googleMap" style="width:100%;height:400px;"></div>
+                                        <?php clearstatcache();
+                                        header("Cache-Control: no-cache, must-revalidate"); ?>
+                                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNIv78OvzBwmWEtVAQQrKq5UkFsNuZY8&callback=initialize" async defer></script>
+                                        <script type="text/javascript">
+                                            var marker;
 
-                                        <script>
-                                            function myMap() {
-                                                var mapProp = {
-                                                    center: new google.maps.LatLng(51.508742, -0.120850),
-                                                    zoom: 5,
-                                                };
-                                                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                                            function initialize() {
+                                                // Variabel untuk menyimpan informasi lokasi
+                                                var infoWindow = new google.maps.InfoWindow;
+                                                //  Variabel berisi properti tipe peta
+                                                var mapOptions = {
+                                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                }
+                                                // Pembuatan peta
+                                                var peta = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+                                                // Variabel untuk menyimpan batas kordinat
+                                                var bounds = new google.maps.LatLngBounds();
+                                                // Pengambilan data dari database MySQL
+                                                <?php
+                                                $lat  = (float)$alternative->latitude;
+                                                $long = (float)$alternative->longitude;
+                                                $info = $alternative->nama_alternatif;
+                                                echo "addMarker($lat, $long, '$info');";
+                                                ?>
+                                                // Proses membuat marker 
+                                                function addMarker(lat, lng, info) {
+                                                    var lokasi = new google.maps.LatLng(lat, lng);
+                                                    bounds.extend(lokasi);
+                                                    var marker = new google.maps.Marker({
+                                                        map: peta,
+                                                        position: lokasi
+                                                    });
+                                                    peta.setOptions({
+
+                                                        minZoom: 5,
+                                                        maxZoom: 30
+                                                    });
+                                                    peta.fitBounds(bounds);
+                                                    bindInfoWindow(marker, peta, infoWindow, info);
+                                                }
+                                                // Menampilkan informasi pada masing-masing marker yang diklik
+                                                function bindInfoWindow(marker, peta, infoWindow, html) {
+                                                    google.maps.event.addListener(marker, 'click', function() {
+                                                        infoWindow.setContent(html);
+                                                        infoWindow.open(peta, marker);
+                                                    });
+                                                }
                                             }
                                         </script>
-
-                                        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+                                        <div id="googleMap" style="width:100%; height:400px;"></div>
                                     </article>
                                 </figure>
                             </div>

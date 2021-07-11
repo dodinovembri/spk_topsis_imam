@@ -50,7 +50,7 @@ class RecomendationController extends Controller
      */
     public function show($id)
     {
-        $data['alternative'] = AlternativeModel::find($id);
+        $data['alternative'] = AlternativeModel::with('gallery')->where('id', $id)->first();
         return view('recomendation.show', $data);
     }
 
