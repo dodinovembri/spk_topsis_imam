@@ -1,5 +1,5 @@
 # Slider
-Slidertable.
+Slider table.
 
 ```sql
 CREATE TABLE slider (

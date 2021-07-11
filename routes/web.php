@@ -27,6 +27,7 @@ Route::post('recomendation/update/{id}', [App\Http\Controllers\RecomendationCont
 Route::get('recomendation/destroy/{id}', [App\Http\Controllers\RecomendationController::class, 'destroy'])->name('destroy');
 Route::get('recomendation/filter', [App\Http\Controllers\RecomendationController::class, 'filter'])->name('filter');
 Route::post('recomendation/search', [App\Http\Controllers\RecomendationController::class, 'search'])->name('search');
+Route::post('recomendation/keyword', [App\Http\Controllers\RecomendationController::class, 'keyword'])->name('keyword');
 
 Route::get('destination/{id}', [App\Http\Controllers\DestinationController::class, 'index'])->name('index');
 Route::get('destination/create', [App\Http\Controllers\DestinationController::class, 'create'])->name('create');

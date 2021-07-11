@@ -276,4 +276,14 @@ class RecomendationController extends Controller
         $data['final_results'] = $final_results;
         return view('recomendation.search_result', $data);
     }
+
+    public function keyword(Request $request)
+    {
+        $keyword = $request->keyword;
+        $data['alternatives'] = DB::select("
+            SELECT * FROM alternatif 
+            WHERE nama_alternatif LIKE '%$keyword%'
+        ");
+        return view('recomendation.keyword', $data);
+    }
 }
