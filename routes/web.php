@@ -28,7 +28,7 @@ Route::get('recomendation/destroy/{id}', [App\Http\Controllers\RecomendationCont
 Route::get('recomendation/filter', [App\Http\Controllers\RecomendationController::class, 'filter'])->name('filter');
 Route::post('recomendation/search', [App\Http\Controllers\RecomendationController::class, 'search'])->name('search');
 
-Route::get('destination', [App\Http\Controllers\DestinationController::class, 'index'])->name('index');
+Route::get('destination/{id}', [App\Http\Controllers\DestinationController::class, 'index'])->name('index');
 Route::get('destination/create', [App\Http\Controllers\DestinationController::class, 'create'])->name('create');
 Route::post('destination/store', [App\Http\Controllers\DestinationController::class, 'store'])->name('store');
 Route::get('destination/show/{id}', [App\Http\Controllers\DestinationController::class, 'show'])->name('show');

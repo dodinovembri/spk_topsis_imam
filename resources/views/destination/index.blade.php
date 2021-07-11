@@ -36,7 +36,7 @@
         <script>
             var div = document.getElementById('container');
             var PSV = new PhotoSphereViewer({
-                panorama: 'assets/photo_sphere/parc-saint-pierre-amiens.jpg',
+                panorama: "{{ asset('assets/photo_sphere/parc-saint-pierre-amiens.jpg') }}",
                 container: div,
                 time_anim: 3000,
                 navbar: true,

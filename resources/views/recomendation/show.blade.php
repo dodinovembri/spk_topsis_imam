@@ -15,27 +15,27 @@
     @include('components.header')
 
     <div class="main-wrapper">
-        <div class="blog-single-page mrt-90">
+        <div class="blog-single-page">
             <article class="single-post single-post-two post tag-getting-started ">
                 <div class="container">
                     <div class="entry-header">
 
-                        <h3>Start here for a quick overview everything you need to know</h3>
+                        <h3>{{ $alternative->nama_alternatif }}</h3>
 
                     </div>
                 </div>
 
-                <div class="container">
+                <div class="container" style="margin-top: -50px;">
                     <div class="post-details">
 
                         <div class="entry-content">
                             <div class="all-contents">
-                                <figure class="kg-card kg-image-card kg-card-hascaption"><img src="{{ asset('assets/content/images/2021/04/12-2.jpg') }}" class="kg-image" alt loading="lazy" width="1920" height="1104" srcset="https://pathway.the9t9.com/content/images/size/w600/2021/04/12-2.jpg 600w, https://pathway.the9t9.com/content/images/size/w1000/2021/04/12-2.jpg 1000w, https://pathway.the9t9.com/content/images/size/w1600/2021/04/12-2.jpg 1600w, https://pathway.the9t9.com/content/images/2021/04/12-2.jpg 1920w" sizes="(min-width: 720px) 720px">
-                                    <a href="">
+                                <figure class="kg-card kg-image-card kg-card-hascaption"><img src="{{ asset('img/alternative') }}/{{ $alternative->gambar }}" class="kg-image" alt loading="lazy" width="1920" height="1104" sizes="(min-width: 720px) 720px">
+                                    <a href="{{ url('destination', $alternative->id) }}" target="_blank">
                                         <figcaption>Lihat dengan mode Panorama</figcaption>
                                     </a>
                                 </figure>
-                                <p>{{ $alternative->keterangan }}</p>
+                                <p style="margin-top: -40px;">{{ $alternative->keterangan }}</p>
                                 <figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption">
                                     <div class="kg-gallery-container">
                                         <div class="kg-gallery-row">
