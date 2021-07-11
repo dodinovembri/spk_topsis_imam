@@ -23,13 +23,8 @@
                                     <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" aria-label="Password" aria-describedby="password" required>
                                 </div>
                                 <div class="actions clearfix">
-                                    <a href="forgot-pwd.html">Lost password?</a>
                                     <button type="submit" class="btn btn-primary">Login</button>
-                                </div>
-                                <div class="or"></div>
-                                <div class="mt-4">
-                                    <a href="signup.html" class="additional-link">Don't have an Account? <span>Create Now</span></a>
-                                </div>
+                                </div>                        
                             </div>
                         </div>
                         <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
