@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AlternativeModel;
+use App\Models\TypeModel;
 use Illuminate\Support\Facades\Validator;
 
 class AlternativeController extends Controller
@@ -27,7 +28,8 @@ class AlternativeController extends Controller
      */
     public function create()
     {
-        return view('admin.alternative.create');
+        $data['categories'] = TypeModel::all();
+        return view('admin.alternative.create', $data);
     }
 
     /**
@@ -46,6 +48,7 @@ class AlternativeController extends Controller
             $request->file('gambar')->move("img/alternative/", $fileName3);
 
             $insert = new AlternativeModel();
+            $insert->id_jenis_alternatif = $request->id_jenis_alternatif;
             $insert->kode_alternatif = $request->kode_alternatif;
             $insert->nama_alternatif = $request->nama_alternatif;
             $insert->latitude = $request->latitude;
@@ -80,7 +83,8 @@ class AlternativeController extends Controller
      */
     public function edit($id)
     {
-        $data['alternative'] = AlternativeModel::find($id);
+        $data['alternative'] = AlternativeModel::with('category')->where('id', $id)->first();
+        $data['categories'] = TypeModel::all();
         return view('admin.alternative.edit', $data);
     }
 
@@ -101,6 +105,7 @@ class AlternativeController extends Controller
         }
 
         $update = AlternativeModel::find($id);
+        $update->id_jenis_alternatif = $request->id_jenis_alternatif;
         $update->kode_alternatif = $request->kode_alternatif;
         $update->nama_alternatif = $request->nama_alternatif;
         $update->latitude = $request->latitude;

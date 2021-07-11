@@ -37,6 +37,17 @@
                                         <div class="card-header">Edit Alternatif</div>
                                         <div class="card-body">
                                             <div class="form-group row gutters">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Jenis Alternatif</label>
+                                                <div class="col-sm-9">
+                                                    <select name="id_jenis_alternatif" class="form-control" id="">
+                                                        <option value="{{ $alternative->id_jenis_alternatif }}">{{ $alternative->category->nama_jenis }}</option>
+                                                        <?php foreach ($categories as $key => $value) { ?>
+                                                            <option value="{{ $value->id }}">{{ $value->nama_jenis }}</option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Alternatif</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" name="kode_alternatif" class="form-control" placeholder="Kode Alternatif" value="{{ $alternative->kode_alternatif }}" required>
@@ -53,7 +64,7 @@
                                                 <div class="col-sm-9">
                                                     <input type="text" name="latitude" class="form-control" placeholder="Latitude" value="{{ $alternative->latitude }}" required>
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Logitude</label>
                                                 <div class="col-sm-9">
