@@ -105,8 +105,8 @@ class AlternativeController extends Controller
         $update->nama_alternatif = $request->nama_alternatif;
         $update->latitude = $request->latitude;
         $update->longitude = $request->longitude;
-        if (isset($request->image)) {
-            $update->image = $request->image;
+        if (isset($gambar)) {
+            $update->gambar = $fileName3;
         }
         $update->keterangan = $request->keterangan;
         $update->update();
