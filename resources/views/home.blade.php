@@ -82,7 +82,7 @@
                                         <!--./ entry-thumb -->
                                         <div class="content-entry-wrap">
                                             <div class="entry-category">
-                                                <a href="{{ url('destination', $value->id) }}" class="tag tag- getting-started">Panorama Views</a>
+                                                <a href="{{ url('destination', $value->id) }}" target="_blank" class="tag tag- getting-started">Panorama Views</a>
                                             </div>
                                             <!--./ entry-category -->
                                             <h3 class="entry-title">

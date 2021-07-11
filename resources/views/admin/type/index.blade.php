@@ -41,7 +41,7 @@
                                             <th>No</th>
                                             <th>Kode Jenis</th>
                                             <th>Nama Jenis</th>
-                                            <th>Keterangan</th>
+                                            <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -53,7 +53,7 @@
                                                 <td>{{ $no }}</td>
                                                 <td>{{ $value->kode_jenis }}</td>
                                                 <td>{{ $value->nama_jenis }}</td>
-                                                <td>{{ $value->keterangan }}</td>
+                                                <td><img src="{{ asset('img/type') }}/{{ $value->gambar }}" width="100px"  alt=""></td>
                                                 <td>
                                                     <a href="{{ url('admin/type/show', $value->id) }}"><span class="icon-eye"></span></a> &nbsp;
                                                     <a href="{{ url('admin/type/edit', $value->id) }}"><span class="icon-border_color"></span></a> &nbsp;

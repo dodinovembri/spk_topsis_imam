@@ -22,99 +22,25 @@
             <div class="row justify-content-between">
                 <div class="col-lg-12 main-wrapper-content">
 
-                    <main class="site-main mrt-75">
+                    <main class="site-main mrt-25">
                         <div class="tags-sec section-padding">
                             <div class="row">
-                                <div class="col-sm-6 col-lg-4">
-                                    <a href="{{ url('recomendation') }}">
-                                        <div class="popular-tags">
-                                            <div class="cus-tags-feature">
-                                                <img class="lazy" src="{{ asset('assets/content/images/size/w820/2021/04/cate-2.jpg') }}" alt="" />
-                                            </div>
-                                            <footer class="tags-card-footer">
-                                                <div class="tags-posts-meta">
-                                                    <h4 class="tags-name">#Outdoor</h4>
-                                                    <p>8 posts</p>
+                                <?php foreach ($categories as $key => $value) { ?>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <a href="{{ url('category/show', $value->id) }}">
+                                            <div class="popular-tags">
+                                                <div class="cus-tags-feature">
+                                                    <img class="lazy" src="{{ asset('img/type') }}/{{ $value->gambar }}" alt="" />
                                                 </div>
-                                            </footer>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <a href="../tag/lifestyle/index.html">
-                                        <div class="popular-tags">
-                                            <div class="cus-tags-feature">
-                                                <img class="lazy" src="{{ asset('assets/content/images/size/w820/2021/04/cate-4.jpg') }}" alt="" />
+                                                <footer class="tags-card-footer">
+                                                    <div class="tags-posts-meta">
+                                                        <h4 class="tags-name">{{ $value->nama_jenis }}</h4>
+                                                    </div>
+                                                </footer>
                                             </div>
-                                            <footer class="tags-card-footer">
-                                                <div class="tags-posts-meta">
-                                                    <h4 class="tags-name">#Lifestyle</h4>
-                                                    <p>5 posts</p>
-                                                </div>
-                                            </footer>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <a href="../tag/decoration/index.html">
-                                        <div class="popular-tags">
-                                            <div class="cus-tags-feature">
-                                                <img class="lazy" src="{{ asset('assets/content/images/size/w820/2021/04/cate-3.jpg') }}" alt="" />
-                                            </div>
-                                            <footer class="tags-card-footer">
-                                                <div class="tags-posts-meta">
-                                                    <h4 class="tags-name">#Decoration</h4>
-                                                    <p>5 posts</p>
-                                                </div>
-                                            </footer>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <a href="../tag/getting-started-2/index.html">
-                                        <div class="popular-tags">
-                                            <div class="cus-tags-feature">
-                                                <img class="lazy" src="{{ asset('assets/content/images/size/w820/2021/04/cate-1.jpg') }}" alt="" />
-                                            </div>
-                                            <footer class="tags-card-footer">
-                                                <div class="tags-posts-meta">
-                                                    <h4 class="tags-name">#Traveling</h4>
-                                                    <p>5 posts</p>
-                                                </div>
-                                            </footer>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <a href="../tag/inspiration/index.html">
-                                        <div class="popular-tags">
-                                            <div class="cus-tags-feature">
-                                                <img class="lazy" src="{{ asset('assets/content/images/size/w820/2021/04/cate-7.jpg') }}" alt="" />
-                                            </div>
-                                            <footer class="tags-card-footer">
-                                                <div class="tags-posts-meta">
-                                                    <h4 class="tags-name">#Inspiration</h4>
-                                                    <p>4 posts</p>
-                                                </div>
-                                            </footer>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <a href="../tag/travel/index.html">
-                                        <div class="popular-tags">
-                                            <div class="cus-tags-feature">
-                                                <img class="lazy" src="{{ asset('assets/content/images/size/w820/2021/04/cate-6.jpg') }}" alt="" />
-                                            </div>
-                                            <footer class="tags-card-footer">
-                                                <div class="tags-posts-meta">
-                                                    <h4 class="tags-name">#Travel</h4>
-                                                    <p>3 posts</p>
-                                                </div>
-                                            </footer>
-                                        </div>
-                                    </a>
-                                </div>
+                                        </a>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </main>

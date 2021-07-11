@@ -11,6 +11,9 @@
         <nav class="side-nav">
             <!-- BEGIN: side-nav-content -->
             <ul class="unifyMenu" id="unifyMenu">
+                <li class="menu-header">
+                    -- Main
+                </li>
                 <li>
                     <a href="{{ url('/') }}">
                         <span class="has-icon">
@@ -28,6 +31,17 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ url('admin/ranking') }}">
+                        <span class="has-icon">
+                            <i class="icon-bookmarks"></i>
+                        </span>
+                        <span class="nav-title">Ranking</span>
+                    </a>
+                </li>
+                <li class="menu-header">
+                    -- General Setting
+                </li>
+                <li>
                     <a href="{{ url('admin/criteria') }}">
                         <span class="has-icon">
                             <i class="icon-document3"></i>
@@ -41,14 +55,6 @@
                             <i class="icon-expand"></i>
                         </span>
                         <span class="nav-title">Jenis Alternatif</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('admin/ranking') }}">
-                        <span class="has-icon">
-                            <i class="icon-bookmarks"></i>
-                        </span>
-                        <span class="nav-title">Ranking</span>
                     </a>
                 </li>
                 <li class="menu-header">

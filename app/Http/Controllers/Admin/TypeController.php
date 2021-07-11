@@ -40,10 +40,14 @@ class TypeController extends Controller
     {
         $check = TypeModel::where('kode_jenis', $request->input('kode_jenis'))->first();
         if (empty($check)) {
+            $file                       = $request->file('gambar');
+            $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
+            $request->file('gambar')->move("img/type/", $fileName3);
 
             $insert = new TypeModel();
             $insert->kode_jenis = $request->kode_jenis;
             $insert->nama_jenis = $request->nama_jenis;
+            $insert->gambar = $fileName3;
             $insert->keterangan = $request->keterangan;
             $insert->save();
 
@@ -86,11 +90,21 @@ class TypeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $gambar = $request->file('gambar');
+        if (isset($gambar)) {
+            $file                       = $request->file('gambar');
+            $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
+            $request->file('gambar')->move("img/type/", $fileName3);
+        }
+
         $update = TypeModel::find($id);
         $update->nama_jenis = $request->nama_jenis;
+        if (isset($gambar)) {
+            $update->gambar = $fileName3;
+        }        
         $update->keterangan = $request->keterangan;
         $update->update();
-        
+
         return redirect(url('admin/type'))->with('message', 'Data berhasil diupdate!');
     }
 

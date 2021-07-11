@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlternativeModel;
 use Illuminate\Http\Request;
+use App\Models\TypeModel;
 
 class CategoryController extends Controller
 {
@@ -13,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index');
+        $data['categories'] = TypeModel::all();
+        return view('category.index', $data);
     }
 
     /**
@@ -45,7 +48,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['alternatives'] = AlternativeModel::where('id_jenis_alternatif', $id)->get();
+        return view('category.show', $data);
     }
 
     /**

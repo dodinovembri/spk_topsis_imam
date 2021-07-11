@@ -49,6 +49,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" name="gambar" class="form-control" placeholder="Nama Jenis Alternatif" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                                 <div class="col-sm-9">
                                                     <textarea type="text" rows="3" name="keterangan" class="form-control">{{ $type->keterangan }}</textarea>
