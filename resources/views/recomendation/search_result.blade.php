@@ -35,7 +35,7 @@
                                         <!--./ entry-thumb -->
                                         <div class="content-entry-wrap">
                                             <div class="entry-category">
-                                                <a href="tag/getting-started/index.html" class="tag tag- getting-started">{{ $no }}</a>
+                                                <a href="{{ url('recomendation/show', $alternative->id) }}" class="tag tag- getting-started">{{ $no }}</a>
                                             </div>
                                             <!--./ entry-category -->
                                             <h5 class="">
