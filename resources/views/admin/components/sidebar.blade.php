@@ -51,6 +51,17 @@
                         <span class="nav-title">Ranking</span>
                     </a>
                 </li>
+                <li class="menu-header">
+                    -- Frontend Setting
+                </li>
+                <li>
+                    <a href="{{ url('admin/slider') }}">
+                        <span class="has-icon">
+                            <i class="icon-bookmarks"></i>
+                        </span>
+                        <span class="nav-title">Gambar Slider</span>
+                    </a>
+                </li>
             </ul>
             <!-- END: side-nav-content -->
         </nav>

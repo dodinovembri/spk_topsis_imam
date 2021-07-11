@@ -9,7 +9,7 @@
 									<!-- f-logo -->
 									<div class="f-logo">
 										<a href="index.html">
-											<img src="{{ asset('assets/content/images/2021/04/logo.png') }}" alt="logo-img">
+											<img src="{{ asset('logo/logo.png') }}" width="80px" alt="logo-img">
 										</a>
 									</div>
 									<div class="info-box">
@@ -39,12 +39,12 @@
 								<h2 class="widget-title">Follow Us</h2>
 								<div class="widget-content">
 									<div class="social-content">
-										<a href="https://www.facebook.com/ghost" target="_blank" rel="noopener"><span
+										<a href="https://www.facebook.com" target="_blank" rel="noopener"><span
 												class="fab fa-facebook-f"></span></a>
-										<a href="https://twitter.com/ghost" target="_blank" rel="noopener"><span
+										<a href="https://twitter.com" target="_blank" rel="noopener"><span
 												class="fab fa-twitter"></span></a>
 										<a class="rss-button"
-											href="https://feedly.com/i/subscription/feed/https://pathway.the9t9.com/rss/"
+											href="https://feedly.com"
 											title="RSS" target="_blank" rel="noopener"><span
 												class="fas fa-rss"></span></a>
 									</div>
@@ -62,7 +62,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="copyright-text text-center">
-									<p><a href="index.html">Pathway blog</a> &copy; 2021. All rights reserved.</p>
+									<p><a href="index.html">Destinasi Wisata</a> &copy; 2021. All rights reserved.</p>
 								</div>
 							</div>
 							<!--~./ col-12 ~-->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AlternativeModel;
+use App\Models\SliderModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,6 +25,7 @@ class HomeController extends Controller
             return view('admin.home.index');
         }else{
             $data['alternatives'] = AlternativeModel::all();
+            $data['sliders'] = SliderModel::where('status', 1)->get();
             return view('home', $data);
         }
     }

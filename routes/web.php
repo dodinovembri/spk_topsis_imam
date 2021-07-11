@@ -114,5 +114,13 @@ Route::prefix('admin')->group(function () {
     Route::get('ranking/show/{id}', [App\Http\Controllers\Admin\RankingController::class, 'show'])->name('show');
     Route::get('ranking/edit/{id}', [App\Http\Controllers\Admin\RankingController::class, 'edit'])->name('edit');
     Route::post('ranking/update/{id}', [App\Http\Controllers\Admin\RankingController::class, 'update'])->name('update');
-    Route::get('ranking/destroy/{id}', [App\Http\Controllers\Admin\RankingController::class, 'destroy'])->name('destroy');      
+    Route::get('ranking/destroy/{id}', [App\Http\Controllers\Admin\RankingController::class, 'destroy'])->name('destroy'); 
+    
+    Route::get('slider', [App\Http\Controllers\Admin\SliderController::class, 'index'])->name('index');
+    Route::get('slider/create', [App\Http\Controllers\Admin\SliderController::class, 'create'])->name('create');
+    Route::post('slider/store', [App\Http\Controllers\Admin\SliderController::class, 'store'])->name('store');
+    Route::get('slider/show/{id}', [App\Http\Controllers\Admin\SliderController::class, 'show'])->name('show');
+    Route::get('slider/edit/{id}', [App\Http\Controllers\Admin\SliderController::class, 'edit'])->name('edit');
+    Route::post('slider/update/{id}', [App\Http\Controllers\Admin\SliderController::class, 'update'])->name('update');
+    Route::get('slider/destroy/{id}', [App\Http\Controllers\Admin\SliderController::class, 'destroy'])->name('destroy');     
 });
