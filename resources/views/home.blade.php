@@ -29,8 +29,9 @@
                                                 foreach ($alternatives as $key => $value) {
                                                     array_push($id, $value->id);
                                                 } 
-                                                $id_show = array_rand($id); ?>
-                                                <a href="{{ url('recomendation/show', $id_show) }}" class="tag tag- lifestyle">Kemana Saja</a>
+                                                $id_show = array_rand($id);
+                                                $v = $id[$id_show]; ?>
+                                                <a href="{{ url('recomendation/show', $v) }}" class="tag tag- lifestyle">Kemana Saja</a>
                                             </div>
                                             <!--./ entry-title -->
                                         </div>
