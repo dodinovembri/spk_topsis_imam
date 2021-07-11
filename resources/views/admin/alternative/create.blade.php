@@ -78,6 +78,12 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar Panorama</label>
+                                                <div class="col-sm-9">
+                                                    <input type="file" name="gambar_panorama" class="form-control" placeholder="Longitude" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
                                                 <div class="col-sm-9">
                                                     <textarea type="file" rows="7" name="keterangan" class="form-control" placeholder="Longitude"> </textarea>

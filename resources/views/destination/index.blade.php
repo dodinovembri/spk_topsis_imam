@@ -28,23 +28,28 @@
 
 <div class="site-content">
 
-@include('components.header')
+    @include('components.header')
 
     <div class="frontpage-slider-posts style-one">
-        <div id="container" style="height: 85%;"></div>
+        <?php if (isset($alternative->gambar_panorama)) { ?>
+            
+            <div id="container" style="height: 85%;"></div>
 
-        <script>
-            var div = document.getElementById('container');
-            var PSV = new PhotoSphereViewer({
-                panorama: "{{ asset('assets/photo_sphere/parc-saint-pierre-amiens.jpg') }}",
-                container: div,
-                time_anim: 3000,
-                navbar: true,
-                navbar_style: {
-                    backgroundColor: 'rgba(58, 67, 77, 0.7)'
-                },
-            });
-        </script>
+            <script>
+                var div = document.getElementById('container');
+                var PSV = new PhotoSphereViewer({
+                    panorama: "{{ asset('img/alternative') }}/{{ $alternative->gambar_panorama }}",
+                    container: div,
+                    time_anim: 3000,
+                    navbar: true,
+                    navbar_style: {
+                        backgroundColor: 'rgba(58, 67, 77, 0.7)'
+                    },
+                });
+            </script>
+        <?php } else{ ?>
+            <p>Gambar Panorama tidak tersedia</p>
+        <?php } ?>
     </div>
 </div>
 

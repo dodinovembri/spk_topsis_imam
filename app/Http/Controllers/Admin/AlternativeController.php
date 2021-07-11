@@ -47,6 +47,10 @@ class AlternativeController extends Controller
             $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('gambar')->move("img/alternative/", $fileName3);
 
+            $file2                       = $request->file('gambar_panorama');
+            $fileName4                  = uniqid() . '.' . $file2->getClientOriginalExtension();
+            $request->file('gambar_panorama')->move("img/alternative/", $fileName4);
+
             $insert = new AlternativeModel();
             $insert->id_jenis_alternatif = $request->id_jenis_alternatif;
             $insert->kode_alternatif = $request->kode_alternatif;
@@ -54,6 +58,7 @@ class AlternativeController extends Controller
             $insert->latitude = $request->latitude;
             $insert->longitude = $request->longitude;
             $insert->gambar = $fileName3;
+            $insert->gambar_panorama = $fileName4;
             $insert->keterangan = $request->keterangan;
             $insert->save();
 
@@ -103,6 +108,12 @@ class AlternativeController extends Controller
             $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('gambar')->move("img/alternative/", $fileName3);
         }
+        $gambar_panorama = $request->file('gambar_panorama');
+        if (isset($gambar_panorama)) {
+            $file2                       = $request->file('gambar_panorama');
+            $fileName4                  = uniqid() . '.' . $file2->getClientOriginalExtension();
+            $request->file('gambar_panorama')->move("img/alternative/", $fileName4);
+        }        
 
         $update = AlternativeModel::find($id);
         $update->id_jenis_alternatif = $request->id_jenis_alternatif;
@@ -112,6 +123,9 @@ class AlternativeController extends Controller
         $update->longitude = $request->longitude;
         if (isset($gambar)) {
             $update->gambar = $fileName3;
+        }
+        if (isset($gambar_panorama)) {
+            $update->gambar_panorama = $fileName4;
         }
         $update->keterangan = $request->keterangan;
         $update->update();
