@@ -74,4 +74,6 @@
     @include('components.footer')
 </div>
 
+<a href='#top' id='scroll-top' class='topbutton btn-hide'><span class='fas fa-angle-double-up'></span></a>
+
 @endsection

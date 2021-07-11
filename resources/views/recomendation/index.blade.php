@@ -3,12 +3,7 @@
 @section('content')
 
 
-<div id="loader-overlay">
-    <div class="loader">
-        <img src="{{ asset('assets/content/images/2021/04/logo.png') }}" alt="Pathway blog" />
-        <i class="fas fa-spinner fa-pulse"></i>
-    </div>
-</div>
+@include('components.loader')
 
 <div class="site-content">
 
