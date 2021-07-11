@@ -18,7 +18,7 @@
             <div class="main-content">
                 <div class="row gutters">
                     <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
+                        <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                             <li class="breadcrumb-item"><a href="{{ url('admin/alternative') }}">Alternatif</a></li>
                             <li class="breadcrumb-item"><a href="{{ url('admin/alternative_galleries', Session::get('id_alternatif')) }}">Gallery Alternatif</a></li>
@@ -37,6 +37,12 @@
                                         @csrf
                                         <div class="card-header">Buat Gambar Slider</div>
                                         <div class="card-body">
+                                            <div class="form-group row gutters">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Alternatif</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="" value="{{ Session::get('nama_alternatif') }}" class="form-control" placeholder="Nama Gambar Slider" readonly>
+                                                </div>
+                                            </div>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar</label>
                                                 <div class="col-sm-9">
