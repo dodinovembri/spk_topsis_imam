@@ -35,7 +35,7 @@
                                             // Variabel untuk menyimpan batas kordinat
                                             var bounds = new google.maps.LatLngBounds();
                                             // Pengambilan data dari database MySQL
-                                            <?php foreach ($alternatives as $key => $value) { 
+                                            <?php foreach ($alternatives as $key => $value) {
                                                 $lat  = (float)$value->latitude;
                                                 $long = (float)$value->longitude;
                                                 $info = $value->nama_alternatif;
@@ -86,7 +86,7 @@
                                                             </select>
                                                         <?php } ?>
                                                         <div class="subscribe-btn d-flex align-items-center">
-                                                            <button type="submit" class="btn btn-sign">
+                                                            <button type="button" id="exampleModal" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">
                                                                 <span class="button-text">Keterangan Kriteria</span>
                                                                 <span class="button-loader"><i class="fas fa-sync-alt"></i></span>
                                                             </button>
@@ -108,6 +108,7 @@
                                 </article>
 
                             </div>
+
                         </div>
                     </main>
                 </div>
