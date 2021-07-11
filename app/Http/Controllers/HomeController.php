@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AlternativeModel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,7 +23,8 @@ class HomeController extends Controller
         if (isset(auth()->user()->id)) {
             return view('admin.home.index');
         }else{
-            return view('home');
+            $data['alternatives'] = AlternativeModel::all();
+            return view('home', $data);
         }
     }
 }

@@ -17,7 +17,8 @@ class RecomendationController extends Controller
      */
     public function index()
     {
-        return view('recomendation.index');
+        $data['alternatives'] = AlternativeModel::all();
+        return view('recomendation.index', $data);
     }
 
     /**
