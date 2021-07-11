@@ -18,10 +18,11 @@
             <div class="main-content">
                 <div class="row gutters">
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
+                    <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ url('admin/alternative_gallery') }}">Gambar Slider</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Buat Gambar Slider</li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/alternative') }}">Alternatif</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/alternative_galleries', Session::get('id_alternatif')) }}">Gallery Alternatif</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tambah Gallery Alternatif</li>
                         </ol>
                     </nav>
                 </div>
