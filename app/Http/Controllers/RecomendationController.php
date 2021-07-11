@@ -90,6 +90,7 @@ class RecomendationController extends Controller
 
     public function filter()
     {
+        $data['alternatives'] = AlternativeModel::all();
         $data['criterias'] = CriteriaModel::with('criterion_value')->get();
 
         return view('recomendation.filter', $data);

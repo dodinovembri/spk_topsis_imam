@@ -16,19 +16,56 @@
                         <div class="row" id="post-masonry">
                             <div class="col-lg-8 post-loop odd">
                                 <article class="post tag-getting-started post-grid-style post-grid-style-two mrb-60">
-                                    <div id="googleMap" style="width:100%;height:400px;"></div>
 
-                                    <script>
-                                        function myMap() {
-                                            var mapProp = {
-                                                center: new google.maps.LatLng(51.508742, -0.120850),
-                                                zoom: 5,
-                                            };
-                                            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+                                    <?php clearstatcache();
+                                    header("Cache-Control: no-cache, must-revalidate"); ?>
+                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnNIv78OvzBwmWEtVAQQrKq5UkFsNuZY8&callback=initialize" async defer></script>
+                                    <script type="text/javascript">
+                                        var marker;
+
+                                        function initialize() {
+                                            // Variabel untuk menyimpan informasi lokasi
+                                            var infoWindow = new google.maps.InfoWindow;
+                                            //  Variabel berisi properti tipe peta
+                                            var mapOptions = {
+                                                mapTypeId: google.maps.MapTypeId.ROADMAP
+                                            }
+                                            // Pembuatan peta
+                                            var peta = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+                                            // Variabel untuk menyimpan batas kordinat
+                                            var bounds = new google.maps.LatLngBounds();
+                                            // Pengambilan data dari database MySQL
+                                            <?php foreach ($alternatives as $key => $value) { 
+                                                $lat  = (float)$value->latitude;
+                                                $long = (float)$value->longitude;
+                                                $info = $value->nama_alternatif;
+                                                echo "addMarker($lat, $long, '$info');";
+                                            } ?>
+                                            // Proses membuat marker 
+                                            function addMarker(lat, lng, info) {
+                                                var lokasi = new google.maps.LatLng(lat, lng);
+                                                bounds.extend(lokasi);
+                                                var marker = new google.maps.Marker({
+                                                    map: peta,
+                                                    position: lokasi
+                                                });
+                                                peta.setOptions({
+                                                    minZoom: 5,
+                                                    maxZoom: 30
+                                                });
+                                                peta.fitBounds(bounds);
+                                                bindInfoWindow(marker, peta, infoWindow, info);
+                                            }
+                                            // Menampilkan informasi pada masing-masing marker yang diklik
+                                            function bindInfoWindow(marker, peta, infoWindow, html) {
+                                                google.maps.event.addListener(marker, 'click', function() {
+                                                    infoWindow.setContent(html);
+                                                    infoWindow.open(peta, marker);
+                                                });
+                                            }
                                         }
                                     </script>
-
-                                    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+                                    <div id="googleMap" style="width:100%;height:400px;"></div>
                                 </article>
                             </div>
                             <div class="col-lg-4 post-loop odd">
