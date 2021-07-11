@@ -38,6 +38,14 @@
                         <span class="nav-title">Ranking</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ url('admin/feedback') }}">
+                        <span class="has-icon">
+                            <i class="icon-happy"></i>
+                        </span>
+                        <span class="nav-title">Feedback</span>
+                    </a>
+                </li>                
                 <li class="menu-header">
                     -- General Setting
                 </li>

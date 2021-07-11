@@ -65,6 +65,14 @@
                             <?php } ?>
                         </div>
                     </main>
+                    
+                </div>
+                <div class="col-lg-3">
+                    <form action="{{ url('recomendation/keyword') }}" method="POST">
+                        @csrf
+                        <button type="button" class="form-control">Lihat Hasil Perhitungan</button>
+                        <br>
+                    </form>
                 </div>
             </div>
         </div>

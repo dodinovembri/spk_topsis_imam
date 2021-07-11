@@ -131,5 +131,13 @@ Route::prefix('admin')->group(function () {
     Route::get('alternative_gallery/show/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'show'])->name('show');
     Route::get('alternative_gallery/edit/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'edit'])->name('edit');
     Route::post('alternative_gallery/update/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'update'])->name('update');
-    Route::get('alternative_gallery/destroy/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'destroy'])->name('destroy');  
+    Route::get('alternative_gallery/destroy/{id}', [App\Http\Controllers\Admin\AlternativeGalleryController::class, 'destroy'])->name('destroy'); 
+    
+    Route::get('feedback', [App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('index');
+    Route::get('feedback/create', [App\Http\Controllers\Admin\FeedbackController::class, 'create'])->name('create');
+    Route::post('feedback/store', [App\Http\Controllers\Admin\FeedbackController::class, 'store'])->name('store');
+    Route::get('feedback/show/{id}', [App\Http\Controllers\Admin\FeedbackController::class, 'show'])->name('show');
+    Route::get('feedback/edit/{id}', [App\Http\Controllers\Admin\FeedbackController::class, 'edit'])->name('edit');
+    Route::post('feedback/update/{id}', [App\Http\Controllers\Admin\FeedbackController::class, 'update'])->name('update');
+    Route::get('feedback/destroy/{id}', [App\Http\Controllers\Admin\FeedbackController::class, 'destroy'])->name('destroy');     
 });
