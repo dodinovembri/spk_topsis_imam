@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\AlternativeModel;
-use App\Models\SliderModel;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,11 +18,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-
-        $data['alternatives'] = AlternativeModel::all();
-        $data['sliders'] = SliderModel::where('status', 1)->get();
-        return view('home', $data);
+        return view('admin.home.index');        
     }
 }
