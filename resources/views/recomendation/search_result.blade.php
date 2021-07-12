@@ -139,7 +139,7 @@
                         <h3>Matriks Yang Ternormalisasi</h3>
                         <table border="1">
                             <tr>
-                                <td>Alternatif</td>
+                                <td>Id Alternatif</td>
                                 <td>Hasil Bagi (Kriteria 1 to N)</td>
                             </tr>
                             <?php foreach ($alternative_values as $key => $value) { ?>
@@ -153,7 +153,7 @@
                         <h3>Bobot Ternormalisasi</h3>
                         <table border="1">
                             <tr>
-                                <td>Alternatif</td>
+                                <td>Id Alternatif</td>
                                 <td>Hasil Kali (Kriteria 1 to N)</td>
                             </tr>
                             <?php foreach ($alternative_after_multiple as $key => $value) { ?>
@@ -180,7 +180,7 @@
                         <br>
                         <h3>D Solution</h3>
                         <table border="1">
-                            <td>Alternatif</td>
+                            <td>Id Alternatif</td>
                             <td>D Positive</td>
                             <td>D Negative</td>
                             <?php foreach ($d_solution as $key => $value) { ?>
@@ -195,7 +195,7 @@
                         <h3>Hasil Preferensi</h3>
                         <table border="1">
                             <td>Ranking</td>
-                            <td>Alternatif</td>
+                            <td>Id Alternatif</td>
                             <td>Preferensi</td>
                             <?php $no = 0;
                             foreach ($final_results as $key => $value) {
