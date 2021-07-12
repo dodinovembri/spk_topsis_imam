@@ -54,6 +54,8 @@ Route::get('contact/edit/{id}', [App\Http\Controllers\ContactController::class, 
 Route::post('contact/update/{id}', [App\Http\Controllers\ContactController::class, 'update'])->name('update');
 Route::get('contact/destroy/{id}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('destroy');
 
+Route::get('privacy', [App\Http\Controllers\PrivacyController::class, 'index'])->name('index');
+
 
 /**
  * route for administrator
