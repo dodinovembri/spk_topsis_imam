@@ -150,6 +150,20 @@
                             <?php } ?>
                         </table>
                         <br>
+                        <h3>Bobot</h3>
+                        <table border="1">
+                            <tr>
+                                <td>Kriteria</td>
+                                <td>Bobot</td>
+                            </tr>
+                            <?php foreach ($weights as $key => $value) { ?>
+                                <tr>
+                                    <td>{{ $value['nama_kriteria'] }}</td>
+                                    <td>{{ $value['bobot'] }}</td>
+                                </tr>
+                            <?php } ?>
+                        </table>       
+                        <br>                 
                         <h3>Bobot Ternormalisasi</h3>
                         <table border="1">
                             <tr>

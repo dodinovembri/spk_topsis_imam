@@ -144,7 +144,8 @@ class RecomendationController extends Controller
         foreach ($weights as $key => $value) {
             $split = explode("#", $value);
             $nilai = $split[1];
-            $data_bobot = array('bobot' => $nilai);
+            $nama_kriteria = CriteriaModel::find($value);
+            $data_bobot = array('bobot' => $nilai, 'nama_kriteria' => $nama_kriteria->nama_kriteria);
             array_push($weight, $data_bobot);
             
             $weight_id = $split[0];
@@ -276,6 +277,7 @@ class RecomendationController extends Controller
 
         $data['devider'] = $devider;
         $data['alternative_values'] = $alternative_value;
+        $data['weights'] = $weight;
         $data['alternative_after_multiple'] = $alternative_after_multiple;
         $data['a_positive'] = $a_positive;
         $data['a_negative'] = $a_negative;
@@ -457,6 +459,7 @@ class RecomendationController extends Controller
 
         $data['devider'] = $devider;
         $data['alternative_values'] = $alternative_value;
+        $data['weights'] = $weight;
         $data['alternative_after_multiple'] = $alternative_after_multiple;
         $data['a_positive'] = $a_positive;
         $data['a_negative'] = $a_negative;
