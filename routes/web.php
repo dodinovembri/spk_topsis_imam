@@ -55,6 +55,7 @@ Route::post('contact/update/{id}', [App\Http\Controllers\ContactController::clas
 Route::get('contact/destroy/{id}', [App\Http\Controllers\ContactController::class, 'destroy'])->name('destroy');
 
 Route::get('privacy', [App\Http\Controllers\PrivacyController::class, 'index'])->name('index');
+Route::get('about', [App\Http\Controllers\AboutUsController::class, 'index'])->name('index');
 
 
 /**
