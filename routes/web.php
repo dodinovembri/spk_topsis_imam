@@ -26,6 +26,7 @@ Route::get('recomendation/edit/{id}', [App\Http\Controllers\RecomendationControl
 Route::post('recomendation/update/{id}', [App\Http\Controllers\RecomendationController::class, 'update'])->name('update');
 Route::get('recomendation/destroy/{id}', [App\Http\Controllers\RecomendationController::class, 'destroy'])->name('destroy');
 Route::get('recomendation/filter', [App\Http\Controllers\RecomendationController::class, 'filter'])->name('filter');
+Route::get('recomendation/all', [App\Http\Controllers\RecomendationController::class, 'all'])->name('all');
 Route::post('recomendation/search', [App\Http\Controllers\RecomendationController::class, 'search'])->name('search');
 Route::post('recomendation/keyword', [App\Http\Controllers\RecomendationController::class, 'keyword'])->name('keyword');
 
