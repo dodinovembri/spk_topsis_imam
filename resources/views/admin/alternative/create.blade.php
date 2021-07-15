@@ -80,7 +80,7 @@
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar Panorama</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" name="gambar_panorama" class="form-control" placeholder="Longitude" required>
+                                                    <input type="file" name="gambar_panorama" class="form-control" placeholder="Longitude">
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
