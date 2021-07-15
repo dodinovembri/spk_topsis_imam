@@ -47,9 +47,12 @@ class AlternativeController extends Controller
             $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('gambar')->move("img/alternative/", $fileName3);
 
-            $file2                       = $request->file('gambar_panorama');
-            $fileName4                  = uniqid() . '.' . $file2->getClientOriginalExtension();
-            $request->file('gambar_panorama')->move("img/alternative/", $fileName4);
+            $gambar_panorama = $request->file('gambar_panorama');
+            if (isset($gambar_panorama)) {
+                $file2                       = $request->file('gambar_panorama');
+                $fileName4                  = uniqid() . '.' . $file2->getClientOriginalExtension();
+                $request->file('gambar_panorama')->move("img/alternative/", $fileName4);
+            }     
 
             $insert = new AlternativeModel();
             $insert->id_kategori = $request->id_kategori;
@@ -58,7 +61,9 @@ class AlternativeController extends Controller
             $insert->latitude = $request->latitude;
             $insert->longitude = $request->longitude;
             $insert->gambar = $fileName3;
-            $insert->gambar_panorama = $fileName4;
+            if (isset($gambar_panorama)) {
+                $update->gambar_panorama = $fileName4;
+            }
             $insert->keterangan = $request->keterangan;
             $insert->save();
 
