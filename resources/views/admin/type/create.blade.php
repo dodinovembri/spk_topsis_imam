@@ -20,8 +20,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="{{ url('admin/type') }}">Jenis Alternatif</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Buat Jenis Alternatif</li>
+                            <li class="breadcrumb-item"><a href="{{ url('admin/type') }}">Kategori</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Buat Kategori</li>
                         </ol>
                     </nav>
                 </div>
@@ -34,24 +34,24 @@
                                 <div class="card">
                                     <form action="{{ url('admin/type/store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
-                                        <div class="card-header">Buat Jenis Alternatif</div>
+                                        <div class="card-header">Buat Kategori</div>
                                         <div class="card-body">
                                             <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Alternatif</label>
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Kode Kategori</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="kode_jenis" class="form-control" placeholder="Kode Jenis Alternatif" required>
+                                                    <input type="text" name="kode_kategori" class="form-control" placeholder="Kode Katgeori" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Alternatif</label>
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Nama Kategori</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="nama_jenis" class="form-control" placeholder="Nama Jenis Alternatif" required>
+                                                    <input type="text" name="nama_kategori" class="form-control" placeholder="Nama Katgeori" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" name="gambar" class="form-control" placeholder="Nama Jenis Alternatif" required>
+                                                    <input type="file" name="gambar" class="form-control" placeholder="Nama Kategori" required>
                                                 </div>
                                             </div>
                                             <div class="form-group row gutters">

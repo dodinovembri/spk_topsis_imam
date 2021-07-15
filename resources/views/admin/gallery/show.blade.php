@@ -38,7 +38,7 @@
                                         <div class="form-group row gutters">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar</label>
                                             <div class="col-sm-9">
-                                                <img src="{{ asset('img/gallery') }}/{{ $gallery->gambar }}" width="40%" alt="">
+                                                <img src="{{ asset('img/gallery') }}/{{ $gallery[0]->gambar }}" width="40%" alt="">
                                             </div>
                                         </div><br>
                                         <div class="form-group row gutters">

@@ -39,10 +39,10 @@
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Jenis Alternatif</label>
                                                 <div class="col-sm-9">
-                                                    <select name="id_jenis_alternatif" class="form-control" id="">
-                                                        <option value="{{ $alternative->id_jenis_alternatif }}">{{ $alternative->category->nama_jenis }}</option>
+                                                    <select name="id_kategori" class="form-control" id="">
+                                                        <option value="{{ $alternative->id_kategori }}">{{ $alternative->category->nama_kategori }}</option>
                                                         <?php foreach ($categories as $key => $value) { ?>
-                                                            <option value="{{ $value->id }}">{{ $value->nama_jenis }}</option>
+                                                            <option value="{{ $value->id }}">{{ $value->nama_kategori }}</option>
                                                         <?php } ?>
                                                     </select>
                                                 </div>

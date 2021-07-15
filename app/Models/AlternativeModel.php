@@ -17,7 +17,7 @@ class AlternativeModel extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Models\TypeModel', 'id_jenis_alternatif');
+        return $this->belongsTo('App\Models\TypeModel', 'id_kategori');
     }
 
     public function gallery()

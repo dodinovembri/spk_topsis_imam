@@ -33,28 +33,22 @@
                         <div class="row gutters">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                 <div class="card">
-                                    <form action="{{ url('admin/alternative_gallery/update', $gallery->id) }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ url('admin/alternative_gallery/update', $gallery[0]->gambar) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="card-header">Buat Gambar Slider</div>
                                         <div class="card-body">
                                             <div class="form-group row gutters">
-                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Judul</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" name="judul" value="{{ $gallery->judul }}" class="form-control" placeholder="Judul Gambar Slider" required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Gambar</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" name="gambar" class="form-control" placeholder="Nama Gambar Slider">
+                                                    <img src="{{ asset('img/gallery') }}/{{ $gallery[0]->gambar }}" width="40%" alt="">
                                                 </div>
-                                            </div>
+                                            </div><br>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Status</label>
                                                 <div class="col-sm-9">
                                                     <select name="status" id="" class="form-control">
-                                                        <option value="{{ $gallery->status }}">
-                                                            <?php if ($gallery->status == 0) {
+                                                        <option value="{{ $gallery[0]->status }}">
+                                                            <?php if ($gallery[0]->status == 0) {
                                                                 echo "Tidak Aktif";
                                                             } else {
                                                                 echo "Aktif";

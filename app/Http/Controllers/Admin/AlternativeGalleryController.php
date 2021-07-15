@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AlternativeGalleryModel;
 use App\Models\AlternativeModel;
+use Illuminate\Support\Facades\DB;
 
 class AlternativeGalleryController extends Controller
 {
@@ -74,7 +75,7 @@ class AlternativeGalleryController extends Controller
      */
     public function show($id)
     {
-        $data['gallery'] = AlternativeGalleryModel::find($id);
+        $data['gallery'] = DB::select("SELECT * FROM gallery WHERE `gambar` = '$id' ");
         return view('admin.gallery.show', $data);
     }
 
@@ -86,7 +87,8 @@ class AlternativeGalleryController extends Controller
      */
     public function edit($id)
     {
-        // 
+        $data['gallery'] = DB::select("SELECT * FROM gallery WHERE `gambar` = '$id' ");
+        return view('admin.gallery.edit', $data);
     }
 
     /**
@@ -98,7 +100,10 @@ class AlternativeGalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 
+        $status = $request->status;
+        $update = DB::select("UPDATE gallery SET `status` = $status WHERE `gambar` = '$id' ");
+        
+        return redirect(url('admin/alternative_galleries', $request->session()->get('id_alternatif')))->with('message', 'Sukses update data!');
     }
 
     /**
@@ -107,11 +112,9 @@ class AlternativeGalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $findtodelete = AlternativeGalleryModel::find($id);
-        $findtodelete->delete();
-
+        $findtodelete = DB::select("DELETE FROM gallery WHERE `gambar` = '$id' ");
         return redirect(url('admin/alternative_galleries', $request->session()->get('id_alternatif')))->with('message', 'Data berhasil dihapus!');
     }
 }

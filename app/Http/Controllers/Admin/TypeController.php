@@ -38,15 +38,15 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        $check = TypeModel::where('kode_jenis', $request->input('kode_jenis'))->first();
+        $check = TypeModel::where('kode_kategori', $request->input('kode_kategori'))->first();
         if (empty($check)) {
             $file                       = $request->file('gambar');
             $fileName3                  = uniqid() . '.' . $file->getClientOriginalExtension();
             $request->file('gambar')->move("img/type/", $fileName3);
 
             $insert = new TypeModel();
-            $insert->kode_jenis = $request->kode_jenis;
-            $insert->nama_jenis = $request->nama_jenis;
+            $insert->kode_kategori = $request->kode_kategori;
+            $insert->nama_kategori = $request->nama_kategori;
             $insert->gambar = $fileName3;
             $insert->keterangan = $request->keterangan;
             $insert->save();
@@ -98,7 +98,7 @@ class TypeController extends Controller
         }
 
         $update = TypeModel::find($id);
-        $update->nama_jenis = $request->nama_jenis;
+        $update->nama_kategori = $request->nama_kategori;
         if (isset($gambar)) {
             $update->gambar = $fileName3;
         }        

@@ -52,7 +52,7 @@ class AlternativeController extends Controller
             $request->file('gambar_panorama')->move("img/alternative/", $fileName4);
 
             $insert = new AlternativeModel();
-            $insert->id_jenis_alternatif = $request->id_jenis_alternatif;
+            $insert->id_kategori = $request->id_kategori;
             $insert->kode_alternatif = $request->kode_alternatif;
             $insert->nama_alternatif = $request->nama_alternatif;
             $insert->latitude = $request->latitude;
@@ -116,7 +116,7 @@ class AlternativeController extends Controller
         }        
 
         $update = AlternativeModel::find($id);
-        $update->id_jenis_alternatif = $request->id_jenis_alternatif;
+        $update->id_kategori = $request->id_kategori;
         $update->kode_alternatif = $request->kode_alternatif;
         $update->nama_alternatif = $request->nama_alternatif;
         $update->latitude = $request->latitude;

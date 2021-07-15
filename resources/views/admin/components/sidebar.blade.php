@@ -22,7 +22,7 @@
                         <span class="nav-title">Dashboard</span>
                     </a>
                 </li>                
-                <li class="{{ (Request::is('admin/alternative')) || (Request::is('admin/alternative/*')) || (Request::is('admin/type')) || (Request::is('admin/type/*'))  ? 'active selected' : '' }}">
+                <li class="{{ (Request::is('admin/alternative')) || (Request::is('admin/alternative/*')) || (Request::is('admin/type')) || (Request::is('admin/type/*')) || (Request::is('admin/alternative_galleries/*')) || (Request::is('admin/alternative_values/*')) || (Request::is('admin/alternative_value/*')) ? 'active selected' : '' }}">
                     <a href="#" class="has-arrow" aria-expanded="false">
                         <span class="has-icon">
                             <i class="icon-laptop_windows"></i>
@@ -31,7 +31,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li>
-                            <a href="{{ url('admin/alternative') }}" class="{{ (Request::is('admin/alternative')) || (Request::is('admin/alternative/*')) ? 'current-page' : '' }}">Alternatif</a>
+                            <a href="{{ url('admin/alternative') }}" class="{{ (Request::is('admin/alternative')) || (Request::is('admin/alternative/*')) || (Request::is('admin/alternative_galleries/*'))  || (Request::is('admin/alternative_values/*')) || (Request::is('admin/alternative_value/*')) ? 'current-page' : '' }}">Alternatif</a>
                         </li>
                         <li>
                             <a href="{{ url('admin/type') }}" class="{{ (Request::is('admin/type')) || (Request::is('admin/type/*')) ? 'current-page' : '' }}">Kategori</a>

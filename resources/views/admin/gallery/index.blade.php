@@ -62,31 +62,11 @@
                                                     } ?>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ url('admin/alternative_gallery/show', $value->id) }}"><span class="icon-eye"></span></a> &nbsp;
-                                                    <a href="#" data-toggle="modal" data-target="#exampleModal{{ $value->id }}"><span class="icon-trash2"></span></a>
+                                                    <a href="{{ url('admin/alternative_gallery/show', $value->gambar) }}"><span class="icon-eye"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/alternative_gallery/edit', $value->gambar) }}"><span class="icon-border_color"></span></a> &nbsp;
+                                                    <a href="{{ url('admin/alternative_gallery/destroy', $value->gambar) }}"><span class="icon-trash2"></span></a>
                                                 </td>
                                             </tr>
-
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="exampleModal{{ $value->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Hapus Data</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>Anda yakin ingin menghapus data ini?</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                            <a href="{{ url('admin/alternative_gallery/destroy', $value->id) }}"><button type="button" class="btn btn-primary">Hapus Data</button></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         <?php } ?>
                                     </tbody>
                                 </table>

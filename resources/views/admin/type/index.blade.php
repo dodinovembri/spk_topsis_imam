@@ -21,7 +21,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Jenis Alternatif</li>
+                            <li class="breadcrumb-item active" aria-current="page">Kategori</li>
                         </ol>
                     </nav>
                 </div>
@@ -29,18 +29,18 @@
                 <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="card">
-                            <div class="card-header">List Jenis Alternatif</div> <br>
+                            <div class="card-header">List Kategori</div> <br>
                             @include('admin.components.flash_message')
                             <div class="card-body" style="margin-top: -20px;">
-                                <a href="{{ url('admin/type/create') }}"><button type="button" class="btn btn-primary">Buat Jenis Alternatif</button></a>
+                                <a href="{{ url('admin/type/create') }}"><button type="button" class="btn btn-primary">Buat Kategori</button></a>
                             </div>
                             <div class="card-body">
                                 <table id="basicExample" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode Jenis</th>
-                                            <th>Nama Jenis</th>
+                                            <th>Kode Kategori</th>
+                                            <th>Nama Kategori</th>
                                             <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -51,8 +51,8 @@
                                             $no++; ?>
                                             <tr>
                                                 <td>{{ $no }}</td>
-                                                <td>{{ $value->kode_jenis }}</td>
-                                                <td>{{ $value->nama_jenis }}</td>
+                                                <td>{{ $value->kode_kategori }}</td>
+                                                <td>{{ $value->nama_kategori }}</td>
                                                 <td><img src="{{ asset('img/type') }}/{{ $value->gambar }}" width="100px"  alt=""></td>
                                                 <td>
                                                     <a href="{{ url('admin/type/show', $value->id) }}"><span class="icon-eye"></span></a> &nbsp;
