@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jul 11, 2021 at 05:48 PM
--- Server version: 10.3.29-MariaDB-log-cll-lve
--- PHP Version: 7.3.28
+-- Host: 127.0.0.1
+-- Generation Time: Jul 12, 2021 at 04:29 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dodinove_topsis-panorama`
+-- Database: `spk_topsis_imam`
 --
 
 -- --------------------------------------------------------
@@ -46,7 +45,7 @@ CREATE TABLE `alternatif` (
 
 INSERT INTO `alternatif` (`id`, `id_jenis_alternatif`, `kode_alternatif`, `nama_alternatif`, `latitude`, `longitude`, `gambar`, `gambar_panorama`, `keterangan`) VALUES
 (1, 1, 'PK', 'Pulau Kemaro', -2.977540, 104.817285, '60ea56a4ab812.jpg', '60eab05112aee.jpg', 'Pulau Kemaro, merupakan sebuah delta kecil di Sungai Musi, terletak sekitar 6 km dari Jembatan Ampera. Pulau Kemaro terletak di daerah industri, yaitu di antara Pabrik Pupuk Sriwijaya dan Pertamina Plaju dan Sungai Gerong. Posisi Pulau Kemaro adalah agak ke timur dari pusat Kota Palembangs.'),
-(2, 1, 'PKU', 'Punti Kayu', -2.943501, 104.728295, '60ea56b8a6213.jpg', NULL, 'Taman Wisata Alam (TWA) Punti Kayu adalah sebuah kawasan pelestarian alam yang dimanfaatkan untuk kegiatan pariwisata alam dan rekreasi di Palembang, Sumatra Selatan . Terletak di tengah kota Palembang - tepatnya di kawasan Km.7 Palembang, Punti Kayu menjadi tempat liburan favorit yang ramai dikunjungi warga kota Palembang khususnya pada akhir pekan dan hari-hari libur. Kawasan ini dilengkapi dengan fasilitas flying fox, taman bermain, miniatur 7 keajaiban dunia, danau, waterpark, dan berbagai hiburan lainnya'),
+(2, 1, 'PKU', 'Punti Kayu', -2.943501, 104.728295, '60ea56b8a6213.jpg', '60eac9b19c9e4.jpg', 'Taman Wisata Alam (TWA) Punti Kayu adalah sebuah kawasan pelestarian alam yang dimanfaatkan untuk kegiatan pariwisata alam dan rekreasi di Palembang, Sumatra Selatan . Terletak di tengah kota Palembang - tepatnya di kawasan Km.7 Palembang, Punti Kayu menjadi tempat liburan favorit yang ramai dikunjungi warga kota Palembang khususnya pada akhir pekan dan hari-hari libur. Kawasan ini dilengkapi dengan fasilitas flying fox, taman bermain, miniatur 7 keajaiban dunia, danau, waterpark, dan berbagai hiburan lainnya'),
 (3, 2, 'PBP', 'Palembang Bird Park', -3.036287, 104.788212, '60ea56cc95438.jpg', NULL, 'Taman wisata Palembang Bird Park terletak di kawasan OPI Mall Jakabaring Palembang, tidak jauh dari OPI Water Fun Jakabaring. Di sini menjadi taman burung karena menyediakan lebih dari 100 jenis burung, seperti burung parkit, jalak, kakak tua, kenari, zebra, dan jenis lainnya. Wisata ini cocok sebagai pilihan keluarga, terutama untuk anak-anak'),
 (4, 2, 'KI', 'Kambang Iwak', -2.989808, 104.746852, '60ea56dc2c2cd.jpg', NULL, 'Taman Wisata Kambang Iwak Besak, salah satu jejak peninggalan Kompeni Belanda di Kota Palembang adalah Taman Wisata Kambang Iwak'),
 (5, 3, 'BKB', 'Benteng Kuto Besak', -2.991089, 104.759293, '60ea56e6c5665.jpg', NULL, 'Kuto Besak, also Benteng Kuto Besak (Indonesian \"Kuto Besak Fortress\") is an 18th-century kraton (Indonesian forted palace) in Palembang, South Sumatra. Kuto Besak was the center of the Sultanate of Palembang before its abolition by the Dutch colonial government. The fort was constructed in 1780 and took seventeen years to complete.[1] Kuto Besak was inaugurated in 1797,[1] marked by the transfer of the royal residence from the older Kuto Lamo to Kuto Besak'),
@@ -293,7 +292,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `image`, `email_verified_at`, `passw
 -- Indexes for table `alternatif`
 --
 ALTER TABLE `alternatif`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_jenis_alternatif` (`id_jenis_alternatif`);
 
 --
 -- Indexes for table `contact_us`
@@ -305,7 +305,8 @@ ALTER TABLE `contact_us`
 -- Indexes for table `gambar_alternatif`
 --
 ALTER TABLE `gambar_alternatif`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_alternatif` (`id_alternatif`);
 
 --
 -- Indexes for table `jenis_alternatif`
@@ -323,13 +324,17 @@ ALTER TABLE `kriteria`
 -- Indexes for table `nilai_alternatif`
 --
 ALTER TABLE `nilai_alternatif`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_alternatif` (`id_alternatif`),
+  ADD KEY `id_kriteria` (`id_kriteria`),
+  ADD KEY `id_nilai_kriteria` (`id_nilai_kriteria`);
 
 --
 -- Indexes for table `nilai_kriteria`
 --
 ALTER TABLE `nilai_kriteria`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_kriteria` (`id_kriteria`);
 
 --
 -- Indexes for table `slider`
@@ -358,7 +363,7 @@ ALTER TABLE `alternatif`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `gambar_alternatif`
@@ -401,6 +406,36 @@ ALTER TABLE `slider`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `alternatif`
+--
+ALTER TABLE `alternatif`
+  ADD CONSTRAINT `alternatif_ibfk_1` FOREIGN KEY (`id_jenis_alternatif`) REFERENCES `jenis_alternatif` (`id`);
+
+--
+-- Constraints for table `gambar_alternatif`
+--
+ALTER TABLE `gambar_alternatif`
+  ADD CONSTRAINT `gambar_alternatif_ibfk_1` FOREIGN KEY (`id_alternatif`) REFERENCES `alternatif` (`id`);
+
+--
+-- Constraints for table `nilai_alternatif`
+--
+ALTER TABLE `nilai_alternatif`
+  ADD CONSTRAINT `nilai_alternatif_ibfk_1` FOREIGN KEY (`id_alternatif`) REFERENCES `alternatif` (`id`),
+  ADD CONSTRAINT `nilai_alternatif_ibfk_2` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id`),
+  ADD CONSTRAINT `nilai_alternatif_ibfk_3` FOREIGN KEY (`id_nilai_kriteria`) REFERENCES `nilai_kriteria` (`id`);
+
+--
+-- Constraints for table `nilai_kriteria`
+--
+ALTER TABLE `nilai_kriteria`
+  ADD CONSTRAINT `nilai_kriteria_ibfk_1` FOREIGN KEY (`id_kriteria`) REFERENCES `kriteria` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

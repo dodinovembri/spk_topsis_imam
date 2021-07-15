@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AlternativeGalleryModel extends Model
 {
-    public $table ='gambar_alternatif';
+    public $table ='gallery';
     public $guarded ='[]';
     public $timestamps = false;
 }

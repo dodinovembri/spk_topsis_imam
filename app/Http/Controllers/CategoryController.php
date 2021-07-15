@@ -48,7 +48,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $data['alternatives'] = AlternativeModel::where('id_jenis_alternatif', $id)->get();
+        $data['alternatives'] = AlternativeModel::where('id_kategori', $id)->get();
         return view('category.show', $data);
     }
 

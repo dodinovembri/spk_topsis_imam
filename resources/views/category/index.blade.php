@@ -29,7 +29,7 @@
                                                 </div>
                                                 <footer class="tags-card-footer">
                                                     <div class="tags-posts-meta">
-                                                        <h4 class="tags-name">{{ $value->nama_jenis }}</h4>
+                                                        <h4 class="tags-name">{{ $value->nama_kategori }}</h4>
                                                     </div>
                                                 </footer>
                                             </div>
