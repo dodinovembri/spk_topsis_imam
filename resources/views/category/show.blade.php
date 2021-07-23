@@ -38,7 +38,7 @@
                                             </h3>
                                             <!--./ entry-title -->
                                             <div class="entry-content">
-                                                <p style="text-align: justify; ">{{ substr($value->keterangan, 0, 100) }}...</p>
+                                                <p style="text-align: justify; "><?php echo htmlspecialchars_decode(substr($value->keterangan, 0, 100)) ?>...</p>
                                             </div>
                                             <div class="entry-footer">
                                                 <a href="{{ url('recomendation/show', $value->id) }}" class="more-links">Continue Reading -</a>

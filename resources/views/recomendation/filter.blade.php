@@ -79,7 +79,7 @@
                                                         <h4>Temukan Rekomendasi Object Wisata</h4>
                                                         <?php foreach ($criterias as $key => $value) { ?>
                                                             <select name="criterias[]" id="" class="form-control" style="margin-top: 10px;" required>
-                                                                <option value="">{{ $value->nama_kriteria }}</option>
+                                                                <option value="" disabled selected value>{{ $value->nama_kriteria }}</option>
                                                                 <?php foreach ($value->criterion_value as $key2 => $value2) { ?>
                                                                     <option name="criterion_value" value="{{ $value->id }}#{{ $value2->nilai }}" class="fomr-control">{{ $value2->keterangan }}</option>
                                                                 <?php } ?>

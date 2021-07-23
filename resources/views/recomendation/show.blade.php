@@ -30,7 +30,7 @@
                                         <figcaption>Lihat dengan mode Panorama</figcaption>
                                     </a>
                                 </figure>
-                                <p style="margin-top: -40px;">{{ $alternative->keterangan }}</p>
+                                <p style="margin-top: -40px;"> <?php echo htmlspecialchars_decode($alternative->keterangan) ?></p>
                                 <figure class="kg-card kg-gallery-card kg-width-wide kg-card-hascaption">
                                     <div class="kg-gallery-container">
                                         <div class="kg-gallery-row">

@@ -53,7 +53,7 @@
                                                 </div>
                                             </div>
                                             <div class="entry-content">
-                                                <p style="text-align: justify; ">{{ substr($alternative->keterangan, 0, 100) }}...</p>
+                                                <p style="text-align: justify; "><?php echo htmlspecialchars_decode(substr($alternative->keterangan, 0, 100)) ?>...</p>
                                             </div>
                                             <div class="entry-footer">
                                                 <a href="{{ url('recomendation/show', $alternative->id) }}" class="more-links">Continue Reading -</a>

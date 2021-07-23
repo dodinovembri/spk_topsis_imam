@@ -28,13 +28,21 @@
 	<!-- Data Tables -->
 	<link rel="stylesheet" href="{{ asset('unify/vendor/datatables/dataTables.bs4.css') }}" />
 	<link rel="stylesheet" href="{{ asset('unify/vendor/datatables/dataTables.bs4-custom.css') }}" />
+	<script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
 
 </head>
 
 <body>
 
 	@yield('content')
-
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+	
 	<!-- jQuery first, then Tether, then other JS. -->
 	<script src="{{ asset('unify/js/jquery.js') }}"></script>
 	<script src="{{ asset('unify/js/tether.min.js') }}"></script>
