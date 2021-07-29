@@ -77,13 +77,24 @@
                                                     <form data-members-form="signin" action="{{ url('recomendation/search') }}" method="POST">
                                                         @csrf
                                                         <h4>Temukan Rekomendasi Object Wisata</h4>
-                                                        <?php foreach ($criterias as $key => $value) { ?>
+                                                        <?php foreach ($criterias as $key => $value) {
+                                                            if ($value->kode_kriteria == "C3" || $value->kode_kriteria == "C4") {
+                                                                continue;
+                                                            }  ?>
                                                             <select name="criterias[]" id="" class="form-control" style="margin-top: 10px;" required>
                                                                 <option value="" disabled selected value>{{ $value->nama_kriteria }}</option>
                                                                 <?php foreach ($value->criterion_value as $key2 => $value2) { ?>
                                                                     <option name="criterion_value" value="{{ $value->id }}#{{ $value2->nilai }}" class="fomr-control">{{ $value2->keterangan }}</option>
                                                                 <?php } ?>
                                                             </select>
+                                                        <?php } ?>
+                                                        <p>Fasilitas</p>
+                                                        <?php foreach ($facilities as $key2 => $value2) { ?>
+                                                            <input type="checkbox" name="facility[]" value="{{ $value2->id }}"> {{$value2->nama_fasilitas}} <br>
+                                                        <?php } ?>                                                        
+                                                        <p>Fasilitas</p>
+                                                        <?php foreach ($accessibilities as $key3 => $value3) { ?>
+                                                                <input type="checkbox" name="accessibility[]" value="{{ $value3->id }}"> {{$value3->nama_aksesibilitas}} <br>
                                                         <?php } ?>
                                                         <div class="subscribe-btn d-flex align-items-center">
                                                             <button type="button" id="myBtn" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">

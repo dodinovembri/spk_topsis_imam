@@ -43,7 +43,10 @@
                                                     <input type="text" class="form-control" value="{{ Session::get('kode_alternatif') }} - {{ Session::get('nama_alternatif') }}" readonly>
                                                 </div>
                                             </div>
-                                            <?php foreach ($criterias as $key => $value) { ?>
+                                            <?php foreach ($criterias as $key => $value) {
+                                                if ($value->kode_kriteria == "C3" || $value->kode_kriteria == "C4") {
+                                                    continue;
+                                                } ?>
                                                 <div class="form-group row gutters">
                                                     <label for="inputEmail3" class="col-sm-3 col-form-label">{{ $value->nama_kriteria }}</label>
                                                     <div class="col-sm-9">
@@ -56,6 +59,28 @@
                                                     </div>
                                                 </div>
                                             <?php } ?>
+                                            <div class="form-group row gutters">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Fasilitas</label>
+                                            </div>
+                                            <div class="form-group row gutters" style="margin-top: -40px;">
+                                                <?php foreach ($facilities as $key2 => $value2) { ?>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label"></label>
+                                                    <div class="col-sm-9">
+                                                       <input type="checkbox" name="facility[]" value="{{ $value2->id }}"> {{$value2->nama_fasilitas}}
+                                                    </div>
+                                                <?php } ?>
+                                            </div>
+                                            <div class="form-group row gutters">
+                                                <label for="inputEmail3" class="col-sm-3 col-form-label">Aksesibilitas</label>
+                                            </div>
+                                            <div class="form-group row gutters" style="margin-top: -40px;">
+                                                <?php foreach ($accessibilities as $key3 => $value3) { ?>
+                                                    <label for="inputEmail3" class="col-sm-3 col-form-label"></label>
+                                                    <div class="col-sm-9">
+                                                       <input type="checkbox" name="accessibility[]" value="{{ $value3->id }}"> {{$value3->nama_aksesibilitas}}
+                                                    </div>
+                                                <?php } ?>
+                                            </div>                                            
                                             <br>
                                             <div class="form-group row gutters">
                                                 <label for="inputEmail3" class="col-sm-3 col-form-label"></label>
